@@ -8,9 +8,10 @@ import { Note } from './note';
 })
 export class NoteComponent implements OnInit {
 
-  note: Note;
+  private note: Note;
 
-  constructor() {
+  constructor(note: Note) {
+    this.note = note;
   }
 
   ngOnInit() {
