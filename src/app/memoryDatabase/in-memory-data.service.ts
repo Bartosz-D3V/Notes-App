@@ -1,6 +1,6 @@
 import { Note } from '../note/note';
 
-export class InMemoryDatabase {
+export class InMemoryDataService {
   createDb(): Note[] {
     const notes: Note[] = [
       new Note(1, 'Task of the day!', 'Buy a milk.', true),
