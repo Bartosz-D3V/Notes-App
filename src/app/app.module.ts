@@ -8,6 +8,7 @@ import { InMemoryDataService } from './memoryDatabase/in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { NoteComponent } from './note/note.component';
+import { NoteService } from './note/note.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { NoteComponent } from './note/note.component';
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 600 }),
   ],
-  providers: [],
+  providers: [NoteService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

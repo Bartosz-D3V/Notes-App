@@ -8,7 +8,7 @@ import { Note } from './note';
 @Injectable()
 export class NoteService {
 
-  private notesUrl = 'app/notes';
+  notesUrl = 'app/notes';
 
   constructor(private http: Http) {
   }
@@ -19,6 +19,9 @@ export class NoteService {
       .toPromise()
       .then((response) => {
         return response.json().data as Note[];
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
