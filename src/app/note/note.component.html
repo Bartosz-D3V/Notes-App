@@ -1,16 +1,28 @@
-<div *ngFor="let note of notes">
-  {{note.description}}
+<div class="mdl-grid">
+  <div class=" mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone" *ngFor="let note of notes">
+    <div class="mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title n-note n-note__header">
+        <h2 class="mdl-card__title-text">{{note.title}}</h2>
+      </div>
+      <div class="mdl-card__supporting-text n-note--yellow">
+        <p class="no-extra">
+          {{note.description}}
+        </p>
+      </div>
+      <div class="mdl-card__actions mdl-card--border n-note--yellow">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--7-col mdl-cell--2-col-phone">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              Done!
+            </a>
+          </div>
+          <div class="mdl-cell mdl-cell--5-col mdl-cell--2-col-phone">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              Discard
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<button id="demo-menu-lower-right"
-        class="mdl-button mdl-js-button mdl-button--icon">
-  <i class="material-icons">more_vert</i>
-</button>
-
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-    for="demo-menu-lower-right">
-  <li class="mdl-menu__item">Some Action</li>
-  <li class="mdl-menu__item">Another Action</li>
-  <li disabled class="mdl-menu__item">Disabled Action</li>
-  <li class="mdl-menu__item">Yet Another Action</li>
-</ul>

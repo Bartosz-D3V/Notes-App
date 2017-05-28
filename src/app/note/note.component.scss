@@ -1,0 +1,14 @@
+$yellowPostIn: #FFFFA5;
+$orangePostIn: #FFE8A3;
+
+.n-note {
+
+  &__star {
+  }
+  &__header {
+    background-color: $orangePostIn;
+  }
+  &--yellow {
+    background-color: $yellowPostIn;
+  }
+}
