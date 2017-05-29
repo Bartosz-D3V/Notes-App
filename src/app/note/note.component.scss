@@ -12,3 +12,15 @@ $orangePostIn: #FFE8A3;
     background-color: $yellowPostIn;
   }
 }
+
+.mdl-card {
+
+  &__supporting-text {
+    padding-right: 20px !important;
+  }
+  &__actions, &__title {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+}

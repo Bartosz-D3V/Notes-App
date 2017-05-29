@@ -1,19 +1,20 @@
-* {
-  font-family: 'Bad Script', cursive !important;
-}
-
 h1 {
   &.no-extra {
     font-size: 5em;
+    font-family: 'Bad Script', cursive;
   }
 }
 
 h2 {
-  font-size: 3em;
+  &.no-extra {
+    font-size: 3em;
+    font-family: 'Bad Script', cursive;
+  }
 }
 
 p {
   &.no-extra {
     font-size: 2em;
+    font-family: 'Bad Script', cursive;
   }
 }
