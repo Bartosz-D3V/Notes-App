@@ -10,7 +10,13 @@ export class NoteService {
 
   private notesUrl = 'app/notes';
 
-  constructor(private http: Http) {}
+  private static handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
+
+  constructor(private http: Http) {
+  }
 
   getNotes(): Promise<Array<Note>> {
     return this.http
@@ -19,12 +25,6 @@ export class NoteService {
       .then((response) => {
         return response.json().data as Note[];
       })
-      .catch(this.handleError);
+      .catch(NoteService.handleError);
   }
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
-
 }

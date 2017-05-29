@@ -2,12 +2,17 @@ export class Note {
   id: number;
   title: string;
   description: string;
-  starred = false;
+  _starred = false;
+  _done = false;
+  _deleted = false;
 
-  constructor(id: number, title: string, description: string, starred: boolean) {
+  constructor(id: number, title: string, description: string, starred: boolean, done?: boolean, deleted?: boolean) {
     this.id = id;
     this.title = title;
     this.description = description;
-    this.starred = starred;
-  }
+    this._starred = starred;
+    this._done = done ? done : false;
+    this._deleted = deleted ? false : deleted;
+  };
+
 }
