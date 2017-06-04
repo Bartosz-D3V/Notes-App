@@ -9,6 +9,7 @@ import { InMemoryDataService } from './memoryDatabase/in-memory-data.service';
 import { AppComponent } from './app.component';
 import { NoteComponent } from './note/note.component';
 import { NoteService } from './note/note.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,13 @@ import { NoteService } from './note/note.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 600 }),
+    RouterModule.forRoot([
+      {
+        path: 'heroes',
+        component: NoteComponent
+      }
+    ]),
+    InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 1}),
   ],
   providers: [NoteService],
   bootstrap: [AppComponent]

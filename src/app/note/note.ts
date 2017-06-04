@@ -6,13 +6,13 @@ export class Note {
   _done = false;
   _deleted = false;
 
-  constructor(id: number, title: string, description: string, starred: boolean, done?: boolean, deleted?: boolean) {
+  constructor(id: number, title: string, description: string, starred?: boolean, done?: boolean, deleted?: boolean) {
     this.id = id;
     this.title = title;
     this.description = description;
-    this._starred = starred;
+    this._starred = starred ? starred : false;
     this._done = done ? done : false;
-    this._deleted = deleted ? false : deleted;
+    this._deleted = deleted ? deleted : false;
   };
 
 }
