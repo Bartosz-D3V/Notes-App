@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNoteButtonComponent implements OnInit {
 
-  constructor() { }
+  dialog: any;
+  title = 'What you would like to do?';
 
   ngOnInit() {
+    this.dialog = document.querySelector('dialog');
+  }
+
+  showModal(event): void {
+    this.dialog.showModal();
+  }
+
+  closeModal(event): void {
+    this.dialog.close();
   }
 
 }
