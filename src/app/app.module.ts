@@ -8,13 +8,15 @@ import { InMemoryDataService } from './memoryDatabase/in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { NoteComponent } from './note/note.component';
-import { NoteService } from './note/note.service';
+import { NoteService } from './notes-service/note.service';
 import { RouterModule } from '@angular/router';
+import { NotesListComponent } from './notes-list/notes-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NoteComponent,
+    NotesListComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,7 @@ import { RouterModule } from '@angular/router';
     HttpModule,
     RouterModule.forRoot([
       {
-        path: 'heroes',
+        path: 'notes',
         component: NoteComponent
       }
     ]),

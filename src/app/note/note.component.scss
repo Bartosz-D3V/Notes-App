@@ -15,8 +15,9 @@ $orangePostIn: #FFE8A3;
 
 .mdl-card {
 
-  &__supporting-text {
-    padding-right: 20px !important;
+  &__supporting-text--no-extra {
+    padding-right: 60px;
+    padding-bottom: 60px;
   }
   &__actions, &__title {
     display: flex;
