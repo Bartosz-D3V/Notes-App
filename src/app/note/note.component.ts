@@ -11,7 +11,15 @@ export class NoteComponent {
 
   @Input() note: Note;
 
-  markAsDone(): void {
-    console.log('click');
+  markAsDone(event): void {
+    this.note._done = true;
+  }
+
+  markAsDiscarded(event): void {
+    this.note._deleted = true;
+  }
+
+  markAsStarred(event): void {
+    this.note._starred = true;
   }
 }

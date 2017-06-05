@@ -4,19 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './memoryDatabase/in-memory-data.service';
+import { InMemoryDataService } from './memory-database/in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { NoteComponent } from './note/note.component';
 import { NoteService } from './notes-service/note.service';
 import { RouterModule } from '@angular/router';
 import { NotesListComponent } from './notes-list/notes-list.component';
+import { AddNoteButtonComponent } from './add-note-button/add-note-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NoteComponent,
     NotesListComponent,
+    AddNoteButtonComponent,
   ],
   imports: [
     BrowserModule,
