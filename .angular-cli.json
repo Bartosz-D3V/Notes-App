@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles/manifest.scss",
+        "styles.scss",
         "../node_modules/material-design-lite/material.min.css"
       ],
       "scripts": [

@@ -11,4 +11,7 @@ export class NoteComponent {
 
   @Input() note: Note;
 
+  markAsDone(): void {
+    console.log('click');
+  }
 }
