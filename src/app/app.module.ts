@@ -4,14 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './memory-database/in-memory-data.service';
+import { InMemoryDataService } from './notes/memory-database/in-memory-data.service';
 
 import { AppComponent } from './app.component';
-import { NoteComponent } from './note/note.component';
-import { NoteService } from './notes-service/note.service';
+import { NoteComponent } from './notes/note/note.component';
+import { NoteService } from './notes/notes-service/note.service';
 import { RouterModule } from '@angular/router';
-import { NotesListComponent } from './notes-list/notes-list.component';
-import { AddNoteButtonComponent } from './add-note-button/add-note-button.component';
+import { NotesListComponent } from './notes/notes-list/notes-list.component';
+import { AddNoteButtonComponent } from './notes/add-note-button/add-note-button.component';
+import { AboutComponent } from './about/about.component';
+import { ForkOnGithubComponent } from './fork-on-github/fork-on-github.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { AddNoteButtonComponent } from './add-note-button/add-note-button.compon
     NoteComponent,
     NotesListComponent,
     AddNoteButtonComponent,
+    AboutComponent,
+    ForkOnGithubComponent,
   ],
   imports: [
     BrowserModule,
