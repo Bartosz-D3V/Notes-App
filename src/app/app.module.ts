@@ -39,13 +39,15 @@ import { CommonModule } from '@angular/common';
       {
         path: 'notes',
         component: NoteWrapperComponent,
-        children: [
-          {path: 'trash', component: NoteWrapperComponent}
-        ]
+      },
+      {
+        path: 'notes/:status',
+        component: NoteWrapperComponent
       },
       {
         path: 'about',
-        component: AboutComponent
+        component: AboutComponent,
+        pathMatch: 'full',
       },
     ]),
     InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 1}),

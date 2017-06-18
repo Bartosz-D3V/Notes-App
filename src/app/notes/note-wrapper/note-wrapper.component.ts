@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-note-wrapper',
   templateUrl: './note-wrapper.component.html',
   styleUrls: ['./note-wrapper.component.scss']
 })
-export class NoteWrapperComponent implements OnInit {
+export class NoteWrapperComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  filter: string;
+  private sub: any;
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute) {
   }
 
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.filter = params['status'] || 'remaining';
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }
