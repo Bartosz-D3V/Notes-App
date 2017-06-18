@@ -13,7 +13,8 @@ import { RouterModule } from '@angular/router';
 import { NotesListComponent } from './notes/notes-list/notes-list.component';
 import { AddNoteButtonComponent } from './notes/add-note-button/add-note-button.component';
 import { AboutComponent } from './about/about.component';
-import { ForkOnGithubComponent } from './fork-on-github/fork-on-github.component';
+import { NoteWrapperComponent } from './notes/note-wrapper/note-wrapper.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,17 +23,30 @@ import { ForkOnGithubComponent } from './fork-on-github/fork-on-github.component
     NotesListComponent,
     AddNoteButtonComponent,
     AboutComponent,
-    ForkOnGithubComponent,
+    NoteWrapperComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    CommonModule,
     RouterModule.forRoot([
       {
+        path: '',
+        redirectTo: 'notes',
+        pathMatch: 'full'
+      },
+      {
         path: 'notes',
-        component: NoteComponent
-      }
+        component: NoteWrapperComponent,
+        children: [
+          {path: 'trash', component: NoteWrapperComponent}
+        ]
+      },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
     ]),
     InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 1}),
   ],

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForkOnGithubComponent } from './fork-on-github.component';
+import { NoteWrapperComponent } from './note-wrapper.component';
 
-describe('ForkOnGithubComponent', () => {
-  let component: ForkOnGithubComponent;
-  let fixture: ComponentFixture<ForkOnGithubComponent>;
+describe('NoteWrapperComponent', () => {
+  let component: NoteWrapperComponent;
+  let fixture: ComponentFixture<NoteWrapperComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForkOnGithubComponent ]
+      declarations: [ NoteWrapperComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ForkOnGithubComponent);
+    fixture = TestBed.createComponent(NoteWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

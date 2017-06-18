@@ -1,10 +1,30 @@
-<div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--5-col mdl-cell--2-col-tablet mdl-cell--1-col-phone"></div>
-  <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet mdl-cell--10-col-phone">
-    <h1 class="no-extra">
-      {{title}}
-    </h1>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">Note app</span>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Note organizer</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" [routerLink]="['/notes']"><i class="material-icons">note</i> Remaining</a>
+      <a class="mdl-navigation__link" [routerLink]="['/done']"><i class="material-icons">done</i> Done</a>
+      <a class="mdl-navigation__link" [routerLink]="['/trash']"><i class="material-icons">delete</i> Trash</a>
+      <a class="mdl-navigation__link" href=""><i class="material-icons">info</i> About</a>
+      <a class="mdl-navigation__link" href=""><i class="material-icons">people</i> Fork me on Github</a>
+    </nav>
   </div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--5-col mdl-cell--2-col-tablet mdl-cell--1-col-phone"></div>
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet mdl-cell--10-col-phone">
+          <h1 class="no-extra">
+            {{title}}
+          </h1>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 </div>
-<app-notes-list>loading...</app-notes-list>
-<app-add-note-button></app-add-note-button>
