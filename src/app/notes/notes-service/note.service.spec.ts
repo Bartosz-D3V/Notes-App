@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { NoteService } from './note.service';
+import { HttpModule } from '@angular/http';
 
 describe('NoteService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [NoteService]
+      providers: [NoteService],
+      imports: [HttpModule],
     });
   });
 

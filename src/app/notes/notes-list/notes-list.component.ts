@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Note } from '../note/note';
 import { NoteService } from '../notes-service/note.service';
 
 @Component({
   selector: 'app-notes-list',
   templateUrl: './notes-list.component.html',
+  providers: [NoteService],
 })
 export class NotesListComponent implements OnInit {
 
+  @Input() filter: string;
   notes: Note[];
   error: any;
 
@@ -15,14 +17,7 @@ export class NotesListComponent implements OnInit {
     this.noteService = noteService;
   }
 
-  getNotes(): void {
-    this.noteService
-      .getNotes()
-      .then(notes => this.notes = notes)
-      .catch((error) => this.error = error);
-  }
-
-  getApplicableNotes(): void {
+  getRemainingNotes(): void {
     this.noteService
       .getNotes()
       .then(notes => {
@@ -31,8 +26,36 @@ export class NotesListComponent implements OnInit {
       .catch((error) => this.error = error);
   }
 
+  getDoneNotes(): void {
+    this.noteService
+      .getNotes()
+      .then(notes => {
+        this.notes = notes.filter((note) => note._done);
+      })
+      .catch((error) => this.error = error);
+  }
+
+  getDeletedNotes(): void {
+    this.noteService
+      .getNotes()
+      .then(notes => {
+        this.notes = notes.filter((note) => note._deleted);
+      })
+      .catch((error) => this.error = error);
+  }
+
   ngOnInit() {
-    this.getNotes();
+    switch (this.filter) {
+      case 'remaining':
+        this.getRemainingNotes();
+        break;
+      case 'done':
+        this.getDoneNotes();
+        break;
+      case 'trash':
+        this.getDeletedNotes();
+        break;
+    }
   }
 
 }

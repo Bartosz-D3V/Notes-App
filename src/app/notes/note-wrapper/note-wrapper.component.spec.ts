@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NoteWrapperComponent } from './note-wrapper.component';
+import { NotesListComponent } from '../notes-list/notes-list.component';
+import { AddNoteButtonComponent } from '../add-note-button/add-note-button.component';
+import { NoteComponent } from '../note/note.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpModule } from '@angular/http';
 
 describe('NoteWrapperComponent', () => {
   let component: NoteWrapperComponent;
@@ -8,9 +13,11 @@ describe('NoteWrapperComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NoteWrapperComponent ]
+      declarations: [NoteWrapperComponent, NotesListComponent,
+        AddNoteButtonComponent, NoteComponent],
+      imports: [RouterTestingModule, HttpModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

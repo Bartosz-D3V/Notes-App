@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NotesListComponent } from './notes-list.component';
+import { NoteComponent } from '../note/note.component';
+import { HttpModule } from '@angular/http';
 
 describe('NotesListComponent', () => {
   let component: NotesListComponent;
@@ -8,9 +10,10 @@ describe('NotesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotesListComponent ]
+      declarations: [NotesListComponent, NoteComponent],
+      imports: [HttpModule],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
