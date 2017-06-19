@@ -1,20 +1,46 @@
+sudo: required
+dist: trusty
+
 language: node_js
 node_js:
-  - "8.0.0"
+  - "6.10.0"
 
 branches:
   only:
     - master
 
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+addons:
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+
+before_install:
+  - export CHROME_BIN=/usr/bin/google-chrome
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sudo apt-get update
+  - sudo apt-get install -y libappindicator1 fonts-liberation
+  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - sudo dpkg -i google-chrome*.deb
+
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+  - yarn global add @angular/cli
+
 before_script:
-  - npm install -g yarn
-  - npm install -g @angular/cli
   - yarn install
-  - npm test --single-run --browsers PhantomJS
-  - npm e2e
 
 script:
   - ng build --prod
+  - npm test --single-run --browsers PhantomJS --watch false
+  - npm e2e
 
 notifications:
   email:
