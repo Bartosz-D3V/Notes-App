@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "pretest": "npm run lint",
-    "test": "ng test",
+    "test": "ng test --code-coverage",
     "lint": "ng lint && npm run stylelint",
     "e2e": "ng e2e",
     "dist": "ng build --prod --aot --no-sourcemap",

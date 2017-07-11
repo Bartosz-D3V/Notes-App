@@ -2,6 +2,7 @@
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
 module.exports = function (config) {
+  const path = require('path');
   config.set({
     basePath: '',
     frameworks: ['jasmine', 'chai', '@angular/cli'],
@@ -25,9 +26,23 @@ module.exports = function (config) {
     mime: {
       'text/x-typescript': ['ts', 'tsx']
     },
+    coverageReporter: {
+      reporters: [
+        {type: 'text-summary'},
+        {type: 'lcovonly'},
+        'coverage-istanbul'
+      ]
+    },
     coverageIstanbulReporter: {
-      reports: ['html', 'lcovonly'],
-      fixWebpackSourcePaths: true
+      reports: ['html', 'lcovonly', 'text-summary'],
+      dir: path.join('./', 'coverage'),
+      fixWebpackSourcePaths: true,
+      skipFilesWithNoCoverage: true,
+      'report-config': {
+        html: {
+          subdir: 'html'
+        }
+      }
     },
     angularCli: {
       environment: 'dev'
