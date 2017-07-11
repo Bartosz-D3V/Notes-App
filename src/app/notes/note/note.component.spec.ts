@@ -1,7 +1,11 @@
+/* global chai */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import {expect, assert} from 'chai';
 
 import { NoteComponent } from './note.component';
 import { HttpModule } from '@angular/http';
+
 
 describe('NoteComponent', () => {
   let component: NoteComponent;
@@ -22,6 +26,6 @@ describe('NoteComponent', () => {
   });
 
   it('should be created', () => {
-    expect(component).toBeTruthy();
+    expect(component).to.be.an('object');
   });
 });
