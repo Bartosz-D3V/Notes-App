@@ -2,24 +2,23 @@ $yellowPostIn: #FFFFA5;
 $orangePostIn: #FFE8A3;
 
 .n-note {
-
-  &__star {
-  }
   &__header {
     background-color: $orangePostIn;
   }
+
   &--yellow {
     background-color: $yellowPostIn;
   }
 }
 
 .mdl-card {
-
   &__supporting-text--no-extra {
     padding-right: 60px;
     padding-bottom: 60px;
   }
-  &__actions, &__title {
+
+  &__actions,
+  &__title {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;

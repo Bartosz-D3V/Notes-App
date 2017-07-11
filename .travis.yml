@@ -3,7 +3,9 @@ dist: trusty
 
 language: node_js
 node_js:
-  - "6.10.0"
+  - 6
+  - 7
+  - 8
 
 branches:
   only:
@@ -16,6 +18,7 @@ before_install:
   - sudo apt-get install -y libappindicator1 fonts-liberation
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
+  - npm install -g yarn
 
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
@@ -25,8 +28,9 @@ before_script:
   - yarn install
 
 script:
+  - npm run lint
   - ng build --prod
-  - npm test --single-run --browsers PhantomJS --watch false
+  - npm test
   - npm e2e
 
 notifications:
