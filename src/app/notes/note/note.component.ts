@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
-import { Note } from './note';
-import { NoteService } from '../notes-service/note.service';
+import {Note} from './note';
+import {NoteService} from '../notes-service/note.service';
 
 @Component({
   selector: 'app-note',
@@ -12,19 +12,20 @@ import { NoteService } from '../notes-service/note.service';
 export class NoteComponent {
 
   @Input() note: Note;
-
-  constructor(private noteService: NoteService) {
-  }
+  @Output() change: EventEmitter<Note> = new EventEmitter();
 
   markAsDone(): void {
     this.note._done = true;
+    this.change.emit(this.note);
   }
 
   markAsDiscarded(): void {
     this.note._deleted = true;
+    this.change.emit(this.note);
   }
 
   markAsStarred(): void {
     this.note._starred = true;
+    this.change.emit(this.note);
   }
 }

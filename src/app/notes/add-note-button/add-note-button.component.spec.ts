@@ -26,6 +26,6 @@ describe('AddNoteButtonComponent', () => {
   });
 
   it('should be created', () => {
-    expect(component).to.be.true;
+    expect(component).to.be.an('object');
   });
 });
