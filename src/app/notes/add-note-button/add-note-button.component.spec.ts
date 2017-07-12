@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AddNoteButtonComponent } from './add-note-button.component';
+import {expect, assert} from 'chai';
+
+import {AddNoteButtonComponent} from './add-note-button.component';
 
 describe('AddNoteButtonComponent', () => {
   let component: AddNoteButtonComponent;
@@ -8,9 +10,9 @@ describe('AddNoteButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddNoteButtonComponent ]
+      declarations: [AddNoteButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +21,11 @@ describe('AddNoteButtonComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should be defined', () => {
+    assert.isDefined(AddNoteButtonComponent);
+  });
+
   it('should be created', () => {
-    expect(component).toBeTruthy();
+    expect(component).to.be.true;
   });
 });

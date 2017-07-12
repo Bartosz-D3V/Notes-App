@@ -13,19 +13,18 @@ export class NoteComponent {
 
   @Input() note: Note;
 
-
   constructor(private noteService: NoteService) {
   }
 
-  markAsDone(event): void {
+  markAsDone(): void {
     this.note._done = true;
   }
 
-  markAsDiscarded(event): void {
+  markAsDiscarded(): void {
     this.note._deleted = true;
   }
 
-  markAsStarred(event): void {
+  markAsStarred(): void {
     this.note._starred = true;
   }
 }
