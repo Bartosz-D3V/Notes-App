@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-add-note-button',
@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNoteButtonComponent implements OnInit {
 
-  dialog: any;
-  title = 'What you would like to do?';
+  private dialog: any;
+  private title = 'What you would like to do?';
 
   ngOnInit() {
     this.dialog = document.querySelector('dialog');

@@ -9,9 +9,10 @@ import {NoteService} from '../notes-service/note.service';
 })
 export class NotesListComponent implements OnInit {
 
-  @Input() filter: string;
-  notes: Note[];
-  error: any;
+  @Input()
+  filter: string;
+  private notes: Note[];
+  private error: any;
 
   constructor(private noteService: NoteService) {
     this.noteService = noteService;
@@ -44,7 +45,14 @@ export class NotesListComponent implements OnInit {
       .catch((error) => this.error = error);
   }
 
-  ngOnInit() {
+  updateNote(note): void {
+    this.noteService
+      .update(note)
+      .catch((error) => this.error = error);
+    this.retrieveNotes();
+  }
+
+  retrieveNotes(): void {
     switch (this.filter) {
       case 'remaining':
         this.getRemainingNotes();
@@ -56,6 +64,10 @@ export class NotesListComponent implements OnInit {
         this.getDeletedNotes();
         break;
     }
+  }
+
+  ngOnInit() {
+    this.retrieveNotes();
   }
 
 }

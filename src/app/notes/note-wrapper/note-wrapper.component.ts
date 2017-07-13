@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NoteWrapperComponent implements OnInit, OnDestroy {
 
-  filter: string;
+  private filter: string;
   private sub: any;
 
   constructor(private route: ActivatedRoute) {

@@ -11,8 +11,10 @@ import {NoteService} from '../notes-service/note.service';
 })
 export class NoteComponent {
 
-  @Input() note: Note;
-  @Output() change: EventEmitter<Note> = new EventEmitter();
+  @Input()
+  note: Note;
+  @Output()
+  change: EventEmitter<Note> = new EventEmitter();
 
   markAsDone(): void {
     this.note._done = true;
