@@ -1,8 +1,8 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {expect, assert} from 'chai';
+import { expect, assert } from 'chai';
 
-import {AddNoteButtonComponent} from './add-note-button.component';
+import { AddNoteButtonComponent } from './add-note-button.component';
 
 describe('AddNoteButtonComponent', () => {
   let component: AddNoteButtonComponent;

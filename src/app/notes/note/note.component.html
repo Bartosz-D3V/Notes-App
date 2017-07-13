@@ -4,10 +4,10 @@
     <i class="material-icons" (click)="markAsStarred()">star_border</i>
   </button>
 </div>
-<div class="mdl-card__supporting-text mdl-card__supporting-text--no-extra n-note--yellow">
-  <p class="no-extra">
-    {{note?.description}}
-  </p>
+<div class="mdl-card__supporting-text n-note--yellow">
+    <textarea title="" class="no-extra n-note__textarea n-note__textarea--transparent">
+      {{note?.description}}
+    </textarea>
 </div>
 <div class="mdl-card__actions mdl-card--border n-note--yellow">
   <button class="mdl-button mdl-js-button mdl-js-ripple-effect" (click)="markAsDone()">Done</button>

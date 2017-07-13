@@ -1,6 +1,6 @@
-import {expect, assert} from 'chai';
+import { expect, assert } from 'chai';
 
-import {Note} from './note';
+import { Note } from './note';
 
 
 describe('Note', () => {

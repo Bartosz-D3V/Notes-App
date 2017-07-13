@@ -1,10 +1,10 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {expect, assert} from 'chai';
+import { expect, assert } from 'chai';
 
-import {NoteComponent} from './note.component';
-import {HttpModule} from '@angular/http';
-import {Note} from './note';
+import { NoteComponent } from './note.component';
+import { HttpModule } from '@angular/http';
+import { Note } from './note';
 
 
 describe('NoteComponent', () => {

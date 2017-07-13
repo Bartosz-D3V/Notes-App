@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Headers, Http, Response} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import {Note} from '../note/note';
+import { Note } from '../note/note';
 
 @Injectable()
 export class NoteService {

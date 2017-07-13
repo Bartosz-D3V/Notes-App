@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Note} from '../note/note';
-import {NoteService} from '../notes-service/note.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Note } from '../note/note';
+import { NoteService } from '../notes-service/note.service';
 
 @Component({
   selector: 'app-notes-list',
@@ -23,6 +23,15 @@ export class NotesListComponent implements OnInit {
       .getNotes()
       .then(notes => {
         this.notes = notes.filter((note) => !note._deleted && !note._done);
+      })
+      .catch((error) => this.error = error);
+  }
+
+  getStarredNotes(): void {
+    this.noteService
+      .getNotes()
+      .then(notes => {
+        this.notes = notes.filter((note) => note._starred);
       })
       .catch((error) => this.error = error);
   }
@@ -56,6 +65,9 @@ export class NotesListComponent implements OnInit {
     switch (this.filter) {
       case 'remaining':
         this.getRemainingNotes();
+        break;
+      case 'starred':
+        this.getStarredNotes();
         break;
       case 'done':
         this.getDoneNotes();

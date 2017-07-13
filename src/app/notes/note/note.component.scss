@@ -6,13 +6,29 @@ $orangePostIn: #FFE8A3;
     background-color: $orangePostIn;
   }
 
+  &__textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    max-lines: 2;
+  }
+
+  &__textarea--transparent {
+    background: none;
+    background-color: $yellowPostIn;
+    border: none;
+  }
+
   &--yellow {
     background-color: $yellowPostIn;
   }
 }
 
 .mdl-card {
-  &__supporting-text--no-extra {
+  &__supporting-text {
     padding-right: 60px;
     padding-bottom: 60px;
   }

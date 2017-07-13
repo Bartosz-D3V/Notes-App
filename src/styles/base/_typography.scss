@@ -1,20 +1,29 @@
+$bad-script-font: 'Bad Script', cursive;
+
 h1 {
   &.no-extra {
     font-size: 5em;
-    font-family: 'Bad Script', cursive;
+    font-family: $bad-script-font;
   }
 }
 
 h2 {
   &.no-extra {
     font-size: 3em;
-    font-family: 'Bad Script', cursive;
+    font-family: $bad-script-font;
   }
 }
 
 p {
   &.no-extra {
     font-size: 2em;
-    font-family: 'Bad Script', cursive;
+    font-family: $bad-script-font;
+  }
+}
+
+textarea {
+  &.no-extra {
+    font-size: 2vw;
+    font-family: $bad-script-font;
   }
 }

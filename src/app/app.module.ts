@@ -41,6 +41,10 @@ import { CommonModule } from '@angular/common';
         component: NoteWrapperComponent,
       },
       {
+        path: 'notes/:starred',
+        component: NoteWrapperComponent,
+      },
+      {
         path: 'notes/:status',
         component: NoteWrapperComponent
       },
