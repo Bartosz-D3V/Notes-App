@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { expect, assert } from 'chai';
 
 import { NoteComponent } from './note.component';
-import { HttpModule } from '@angular/http';
 import { Note } from './note';
 
 
@@ -14,7 +15,7 @@ describe('NoteComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NoteComponent],
-      imports: [HttpModule],
+      imports: [HttpModule, FormsModule],
     })
       .compileComponents();
   }));

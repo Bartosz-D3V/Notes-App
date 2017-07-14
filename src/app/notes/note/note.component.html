@@ -5,8 +5,9 @@
   </button>
 </div>
 <div class="mdl-card__supporting-text n-note--yellow">
-    <textarea title="" class="no-extra n-note__textarea n-note__textarea--transparent">
-      {{note?.description}}
+    <textarea title="" class="no-extra n-note__textarea n-note__textarea--transparent" [(ngModel)]="note.description"
+              name="description" (blur)="updateNote($event)">
+      {{note.description}}
     </textarea>
 </div>
 <div class="mdl-card__actions mdl-card--border n-note--yellow">

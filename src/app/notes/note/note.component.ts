@@ -30,4 +30,8 @@ export class NoteComponent {
     this.note._starred = true;
     this.change.emit(this.note);
   }
+
+  updateNote(): void {
+    this.change.emit(this.note);
+  }
 }
