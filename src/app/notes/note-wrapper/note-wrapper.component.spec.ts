@@ -6,6 +6,7 @@ import { AddNoteButtonComponent } from '../add-note-button/add-note-button.compo
 import { NoteComponent } from '../note/note.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 describe('NoteWrapperComponent', () => {
   let component: NoteWrapperComponent;
@@ -15,7 +16,7 @@ describe('NoteWrapperComponent', () => {
     TestBed.configureTestingModule({
       declarations: [NoteWrapperComponent, NotesListComponent,
         AddNoteButtonComponent, NoteComponent],
-      imports: [RouterTestingModule, HttpModule]
+      imports: [RouterTestingModule, HttpModule, FormsModule]
     })
       .compileComponents();
   }));

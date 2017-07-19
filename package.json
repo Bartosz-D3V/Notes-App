@@ -12,7 +12,7 @@
     "dist": "ng build --prod --aot --no-sourcemap",
     "stylelint": "node node_modules/stylelint/bin/stylelint.js --config ./.stylelintrc.json --syntax scss --color ./src/**/*.scss",
     "coverage": "codecov",
-//    "precommit": "npm test",
+    "precommit": "npm test",
     "commitmsg": "commitplease .git/COMMIT_EDITMSG",
     "build": "ng build",
     "prebuild": "npm test"

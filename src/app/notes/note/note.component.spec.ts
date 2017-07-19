@@ -12,6 +12,7 @@ describe('NoteComponent', () => {
   let component: NoteComponent;
   let fixture: ComponentFixture<NoteComponent>;
 
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NoteComponent],
@@ -21,8 +22,10 @@ describe('NoteComponent', () => {
   }));
 
   beforeEach(() => {
+    const note: Note = new Note(1, 'Test title', 'Test description');
     fixture = TestBed.createComponent(NoteComponent);
     component = fixture.componentInstance;
+    component.note = note;
     fixture.detectChanges();
   });
 
@@ -35,24 +38,19 @@ describe('NoteComponent', () => {
   });
 
   describe('public API', () => {
-    const note: Note = new Note(1, '', '');
-
     it('markAsDone method should set done parameter to true', () => {
-      component.note = note;
       component.markAsDone();
-      expect(note._done).to.be.true;
+      expect(component.note._done).to.be.true;
     });
 
     it('markAsDiscarded method should set discarded parameter to true', () => {
-      component.note = note;
       component.markAsDiscarded();
-      expect(note._deleted).to.be.true;
+      expect(component.note._deleted).to.be.true;
     });
 
     it('markAsStarred method should set starred parameter to true', () => {
-      component.note = note;
       component.markAsStarred();
-      expect(note._starred).to.be.true;
+      expect(component.note._starred).to.be.true;
     });
   });
 });
