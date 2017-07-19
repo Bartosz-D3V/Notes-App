@@ -22,7 +22,7 @@ export class NotesListComponent implements OnInit {
     this.noteService
       .getNotes()
       .then(notes => {
-        this.notes = notes.filter((note) => !note._deleted && !note._done);
+        this.notes = notes.filter((note) => !note._done && !note._deleted);
       })
       .catch((error) => this.error = error);
   }
@@ -31,7 +31,7 @@ export class NotesListComponent implements OnInit {
     this.noteService
       .getNotes()
       .then(notes => {
-        this.notes = notes.filter((note) => note._starred);
+        this.notes = notes.filter((note) => note._starred && !note._deleted);
       })
       .catch((error) => this.error = error);
   }
@@ -40,7 +40,7 @@ export class NotesListComponent implements OnInit {
     this.noteService
       .getNotes()
       .then(notes => {
-        this.notes = notes.filter((note) => note._done);
+        this.notes = notes.filter((note) => note._done && !note._deleted);
       })
       .catch((error) => this.error = error);
   }

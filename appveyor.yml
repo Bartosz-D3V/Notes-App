@@ -1,0 +1,32 @@
+environment:
+  matrix:
+      - nodejs_version: "6.9"
+      - nodejs_version: "7"
+
+branches:
+  only:
+  - master
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install -g yarn
+  - npm install -g codecov
+  - npm install -g @angular/cli
+  - yarn install
+
+cache:
+  - node_modules
+  - "%LOCALAPPDATA%/Yarn"
+
+build_script:
+  - ps: if ($env:APPVEYOR_REPO_BRANCH -eq 'master') { node ./scripts/set-dev-version.js }
+  - npm run build
+
+test_script:
+  - npm test
+  - npm e2e
+
+build: off
+
+after_test:
+  - npm run coverage

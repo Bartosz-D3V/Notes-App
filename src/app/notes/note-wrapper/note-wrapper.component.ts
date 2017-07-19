@@ -15,7 +15,7 @@ export class NoteWrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.filter = params['status'] || 'remaining';
+      this.filter = params['status'] === undefined ? 'remaining' : params['status'];
     });
   }
 
