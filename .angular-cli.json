@@ -25,6 +25,11 @@
       "scripts": [
         "../node_modules/material-design-lite/material.min.js"
       ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "styles/partials"
+        ]
+      },
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

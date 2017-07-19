@@ -40,12 +40,4 @@ export class NoteService {
       .catch(NoteService.handleError);
   }
 
-  delete(id: number): Promise<void> {
-    const url = `${this.notesUrl}/${id}`;
-    return this.http.delete(url, {headers: this.headers})
-      .toPromise()
-      .then(() => null)
-      .catch(NoteService.handleError);
-  }
-
 }

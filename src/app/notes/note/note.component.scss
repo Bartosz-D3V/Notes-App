@@ -1,5 +1,5 @@
-$yellowPostIn: #FFFFA5;
-$orangePostIn: #FFE8A3;
+@import "_variables";
+@import "_mixins";
 
 .n-note {
   &__header {
@@ -17,9 +17,17 @@ $orangePostIn: #FFE8A3;
   }
 
   &__textarea--transparent {
-    background: none;
-    background-color: $yellowPostIn;
-    border: none;
+    @include transparent();
+  }
+
+  &__input {
+    width: 80%;
+    height: 100%;
+    resize: none;
+  }
+
+  &__input--transparent {
+    @include transparent();
   }
 
   &--yellow {

@@ -1,0 +1,9 @@
+@mixin transparent() {
+  background: transparent none;
+  border: none;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
