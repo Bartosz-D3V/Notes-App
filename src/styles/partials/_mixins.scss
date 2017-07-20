@@ -7,3 +7,10 @@
     outline: none;
   }
 }
+
+@mixin light-border($color) {
+  background: transparent none;
+  border-color: $color;
+  border-width: 3px;
+  border-style: solid;
+}

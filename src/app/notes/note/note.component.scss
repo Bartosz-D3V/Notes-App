@@ -14,20 +14,20 @@
     text-overflow: ellipsis;
     text-align: justify;
     max-lines: 2;
-  }
 
-  &__textarea--transparent {
-    @include transparent();
+    &--transparent {
+      @include transparent();
+    }
   }
 
   &__input {
     width: 80%;
     height: 100%;
     resize: none;
-  }
 
-  &__input--transparent {
-    @include transparent();
+    &--transparent {
+      @include transparent();
+    }
   }
 
   &--yellow {

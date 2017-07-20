@@ -1,25 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MdDialog } from '@angular/material';
+import { AddNoteDialogComponent } from '../add-note-dialog/add-note-dialog.component';
 
 @Component({
   selector: 'app-add-note-button',
   templateUrl: './add-note-button.component.html',
-  styleUrls: ['./add-note-button.component.scss']
+  styleUrls: ['./add-note-button.component.scss'],
 })
-export class AddNoteButtonComponent implements OnInit {
+export class AddNoteButtonComponent {
 
-  private dialog: any;
-  private title = 'What you would like to do?';
+  private selectedOption: string[];
 
-  ngOnInit() {
-    this.dialog = document.querySelector('dialog');
+  constructor(public dialog: MdDialog) {
   }
 
-  showModal(event): void {
-    this.dialog.showModal();
+  openDialog() {
+    const dialogRef = this.dialog.open(AddNoteDialogComponent);
+    dialogRef.afterClosed().subscribe((result: string[]) => {
+      this.selectedOption = result;
+      console.log(this.selectedOption);
+    });
   }
-
-  closeModal(event): void {
-    this.dialog.close();
-  }
-
 }

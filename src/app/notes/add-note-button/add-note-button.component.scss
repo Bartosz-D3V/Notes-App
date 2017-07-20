@@ -1,9 +1,8 @@
-.mdl-button {
-  &--fixed {
-    &.no-extra {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-    }
+.md-fab{
+
+  &--bottom_fixed{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
   }
 }
