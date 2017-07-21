@@ -1,8 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MdDialogModule, MdIconModule } from '@angular/material';
 
 import { expect, assert } from 'chai';
 
 import { AddNoteButtonComponent } from './add-note-button.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AddNoteButtonComponent', () => {
   let component: AddNoteButtonComponent;
@@ -10,7 +12,12 @@ describe('AddNoteButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AddNoteButtonComponent]
+      imports: [
+        BrowserAnimationsModule,
+        MdDialogModule,
+        MdIconModule
+      ],
+      declarations: [AddNoteButtonComponent],
     })
       .compileComponents();
   }));

@@ -1,25 +1,48 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgModule } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { MdDialog, MdDialogModule, MdInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { expect, assert } from 'chai';
 
 import { AddNoteDialogComponent } from './add-note-dialog.component';
 
+
+@NgModule({
+  declarations: [AddNoteDialogComponent],
+  imports: [
+    BrowserAnimationsModule,
+    MdDialogModule,
+    MdInputModule
+  ],
+  entryComponents: [AddNoteDialogComponent],
+  exports: [AddNoteDialogComponent],
+})
+class DialogModule {
+}
+
 describe('AddNoteDialogComponent', () => {
   let component: AddNoteDialogComponent;
-  let fixture: ComponentFixture<AddNoteDialogComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AddNoteDialogComponent ]
-    })
-    .compileComponents();
-  }));
+  let dialog: MdDialog;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddNoteDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      imports: [DialogModule, MdDialogModule]
+    });
   });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
+  beforeEach(() => {
+    dialog = TestBed.get(MdDialog);
+    const dialogRef = dialog.open(AddNoteDialogComponent);
+
+    component = dialogRef.componentInstance;
+  });
+
+  it('should be defined', () => {
+    assert.isDefined(component);
+  });
+
+  it('should create', () => {
+    expect(component).to.be.an('object');
   });
 });

@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { expect, assert } from 'chai';
+
 import { NoteWrapperComponent } from './note-wrapper.component';
 import { NotesListComponent } from '../notes-list/notes-list.component';
 import { AddNoteButtonComponent } from '../add-note-button/add-note-button.component';
@@ -7,6 +9,7 @@ import { NoteComponent } from '../note/note.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { MdDialogModule, MdIconModule } from '@angular/material';
 
 describe('NoteWrapperComponent', () => {
   let component: NoteWrapperComponent;
@@ -14,9 +17,19 @@ describe('NoteWrapperComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NoteWrapperComponent, NotesListComponent,
-        AddNoteButtonComponent, NoteComponent],
-      imports: [RouterTestingModule, HttpModule, FormsModule]
+      declarations: [
+        NoteWrapperComponent,
+        NotesListComponent,
+        AddNoteButtonComponent,
+        NoteComponent
+      ],
+      imports: [
+        RouterTestingModule,
+        HttpModule,
+        FormsModule,
+        MdIconModule,
+        MdDialogModule
+      ]
     })
       .compileComponents();
   }));
@@ -27,7 +40,11 @@ describe('NoteWrapperComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
+  it('should be defined', () => {
+    assert.isDefined(component);
+  });
+
+  it('should create', () => {
+    expect(component).to.be.an('object');
   });
 });

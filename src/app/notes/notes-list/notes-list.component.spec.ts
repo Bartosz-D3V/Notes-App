@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { expect, assert } from 'chai';
+
 import { NotesListComponent } from './notes-list.component';
 import { NoteComponent } from '../note/note.component';
 import { HttpModule } from '@angular/http';
@@ -11,8 +13,14 @@ describe('NotesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NotesListComponent, NoteComponent],
-      imports: [HttpModule, FormsModule],
+      declarations: [
+        NotesListComponent,
+        NoteComponent
+      ],
+      imports: [
+        HttpModule,
+        FormsModule
+      ],
     })
       .compileComponents();
   }));
@@ -23,7 +31,11 @@ describe('NotesListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
+  it('should be defined', () => {
+    assert.isDefined(component);
+  });
+
+  it('should create', () => {
+    expect(component).to.be.an('object');
   });
 });

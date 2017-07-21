@@ -9,7 +9,10 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './notes/memory-database/in-memory-data.service';
 
 import {
-  MdButtonModule, MdButtonToggleModule, MdDialogModule, MdIconModule,
+  MdButtonModule,
+  MdButtonToggleModule,
+  MdDialogModule,
+  MdIconModule,
   MdInputModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
