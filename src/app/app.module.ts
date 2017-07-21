@@ -13,7 +13,7 @@ import {
   MdButtonToggleModule,
   MdDialogModule,
   MdIconModule,
-  MdInputModule
+  MdInputModule, MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdToolbar, MdToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -45,6 +45,10 @@ import { AddNoteDialogComponent } from './notes/add-note-dialog/add-note-dialog.
     MdIconModule,
     MdInputModule,
     MdButtonToggleModule,
+    MdSidenavModule,
+    MdSliderModule,
+    MdToolbarModule,
+    MdSlideToggleModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {
