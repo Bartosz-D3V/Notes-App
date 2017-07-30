@@ -4,6 +4,10 @@ h1 {
   &.no-extra {
     font-size: 5em;
     font-family: $bad-script-font;
+
+    &--center {
+      text-align: center;
+    }
   }
 }
 
