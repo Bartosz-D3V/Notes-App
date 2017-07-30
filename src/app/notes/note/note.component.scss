@@ -1,7 +1,12 @@
 @import "_variables";
 @import "_mixins";
 
-.n-note {
+.c-md-card {
+  background-color: $yellowPostIn;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+
   &__header {
     background-color: $orangePostIn;
     width: 100%;
@@ -49,22 +54,6 @@
   &__btn {
     width: 10%;
     display: inline;
-  }
-
-  &--yellow {
-    background-color: $yellowPostIn;
-  }
-}
-
-.c-md-card {
-  background-color: $yellowPostIn;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-
-  &__supporting-text {
-    padding-right: 60px;
-    padding-bottom: 60px;
   }
 
   &__actions,

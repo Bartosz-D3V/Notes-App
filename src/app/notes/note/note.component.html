@@ -1,20 +1,20 @@
 <md-card class="c-md-card">
-  <md-card-header class="n-note n-note__header">
-    <md-card-title class="n-note__title">
-      <input title="" class="no-extra n-note__input n-note__input--transparent"
+  <md-card-header class="c-md-card__header">
+    <md-card-title class="c-md-card__title">
+      <input title="" class="no-extra c-md-card__input c-md-card__input--transparent"
              [(ngModel)]="note.title" name="title" (blur)="updateNote($event)" placeholder="{{note?.title}}">
-      <button md-button class="n-note__btn" (click)="markAsStarred()">
+      <button md-button class="c-md-card__btn" (click)="markAsStarred()">
         <i class="material-icons">star_border</i>
       </button>
     </md-card-title>
   </md-card-header>
-  <md-card-content class="c-md-card__supporting-text n-note--yellow">
-    <textarea title="" class="no-extra n-note__textarea n-note__textarea--transparent" [(ngModel)]="note.description"
-              name="description" (blur)="updateNote($event)">
+  <md-card-content>
+    <textarea title="" class="no-extra c-md-card__textarea c-md-card__textarea--transparent"
+              [(ngModel)]="note.description" name="description" (blur)="updateNote($event)">
       {{note?.description}}
     </textarea>
   </md-card-content>
-  <md-card-actions class="c-md-card__actions c-md-card--border n-note--yellow">
+  <md-card-actions class="c-md-card__actions c-md-card--border c-md-card--yellow">
     <button md-button (click)="markAsDone()">Done</button>
     <button md-button (click)="markAsDiscarded()">Discard</button>
   </md-card-actions>
