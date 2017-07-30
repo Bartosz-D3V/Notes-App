@@ -1,17 +1,21 @@
-<div class="mdl-card__title mdl-card--expand n-note n-note__header">
-  <input title="" class="no-extra mdl-card__title-text n-note__input n-note__input--transparent"
-         [(ngModel)]="note.title" name="title" (blur)="updateNote($event)" placeholder="{{note?.title}}">
-  <button class="mdl-button mdl-js-button mdl-button--icon" (click)="markAsStarred()">
-    <i class="material-icons">star_border</i>
-  </button>
-</div>
-<div class="mdl-card__supporting-text n-note--yellow">
+<md-card class="c-md-card">
+  <md-card-header class="n-note n-note__header">
+    <md-card-title class="n-note__title">
+      <input title="" class="no-extra n-note__input n-note__input--transparent"
+             [(ngModel)]="note.title" name="title" (blur)="updateNote($event)" placeholder="{{note?.title}}">
+      <button md-button class="n-note__btn" (click)="markAsStarred()">
+        <i class="material-icons">star_border</i>
+      </button>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content class="c-md-card__supporting-text n-note--yellow">
     <textarea title="" class="no-extra n-note__textarea n-note__textarea--transparent" [(ngModel)]="note.description"
               name="description" (blur)="updateNote($event)">
       {{note?.description}}
     </textarea>
-</div>
-<div class="mdl-card__actions mdl-card--border n-note--yellow">
-  <button class="mdl-button mdl-js-button mdl-js-ripple-effect" (click)="markAsDone()">Done</button>
-  <button class="mdl-button mdl-js-button mdl-js-ripple-effect" (click)="markAsDiscarded()">Discard</button>
-</div>
+  </md-card-content>
+  <md-card-actions class="c-md-card__actions c-md-card--border n-note--yellow">
+    <button md-button (click)="markAsDone()">Done</button>
+    <button md-button (click)="markAsDiscarded()">Discard</button>
+  </md-card-actions>
+</md-card>

@@ -10,7 +10,7 @@ import { InMemoryDataService } from './notes/memory-database/in-memory-data.serv
 
 import {
   MdButtonModule,
-  MdButtonToggleModule,
+  MdButtonToggleModule, MdCardModule,
   MdDialogModule,
   MdIconModule,
   MdInputModule, MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdToolbar, MdToolbarModule
@@ -44,6 +44,7 @@ import { AddNoteDialogComponent } from './notes/add-note-dialog/add-note-dialog.
     MdButtonModule,
     MdIconModule,
     MdInputModule,
+    MdCardModule,
     MdButtonToggleModule,
     MdSidenavModule,
     MdSliderModule,

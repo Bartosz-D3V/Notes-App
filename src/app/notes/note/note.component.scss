@@ -4,6 +4,17 @@
 .n-note {
   &__header {
     background-color: $orangePostIn;
+    width: 100%;
+  }
+
+  &__title {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding-left: $smallPadding;
+    padding-right: $smallPadding;
+    padding-top: $smallPadding;
   }
 
   &__textarea {
@@ -13,7 +24,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: justify;
-    max-lines: 2;
+    max-lines: 3;
+    padding-left: $smallPadding;
+    padding-right: $smallPadding;
+    padding-top: $smallPadding;
 
     &--transparent {
       @include transparent();
@@ -21,13 +35,20 @@
   }
 
   &__input {
-    width: 80%;
+    width: 75%;
     height: 100%;
     resize: none;
+    display: inline;
+    font-size: 2em;
 
     &--transparent {
       @include transparent();
     }
+  }
+
+  &__btn {
+    width: 10%;
+    display: inline;
   }
 
   &--yellow {
@@ -35,7 +56,12 @@
   }
 }
 
-.mdl-card {
+.c-md-card {
+  background-color: $yellowPostIn;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+
   &__supporting-text {
     padding-right: 60px;
     padding-bottom: 60px;
@@ -46,5 +72,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    padding-left: $smallPadding;
+    padding-right: $smallPadding;
   }
 }
