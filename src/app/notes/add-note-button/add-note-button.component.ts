@@ -9,16 +9,10 @@ import { AddNoteDialogComponent } from '../add-note-dialog/add-note-dialog.compo
 })
 export class AddNoteButtonComponent {
 
-  private selectedOption: string[];
-
   constructor(public dialog: MdDialog) {
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(AddNoteDialogComponent);
-    dialogRef.afterClosed().subscribe((result: string[]) => {
-      this.selectedOption = result;
-      console.log(this.selectedOption);
-    });
   }
 }

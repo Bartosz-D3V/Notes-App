@@ -6,15 +6,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { expect, assert } from 'chai';
 
 import { AddNoteDialogComponent } from './add-note-dialog.component';
-
+import { NoteService } from '../notes-service/note.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [AddNoteDialogComponent],
   imports: [
     BrowserAnimationsModule,
     MdDialogModule,
-    MdInputModule
+    MdInputModule,
+    HttpModule,
   ],
+  providers: [NoteService],
   entryComponents: [AddNoteDialogComponent],
   exports: [AddNoteDialogComponent],
 })
