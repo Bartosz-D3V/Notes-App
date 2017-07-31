@@ -20,4 +20,8 @@ export class AddNoteDialogComponent {
     this.noteService.create(title, description);
   }
 
+  isInvalid(title: string, description: string): boolean {
+    return (title === '' || description === '');
+  }
+
 }

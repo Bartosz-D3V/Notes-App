@@ -1,15 +1,16 @@
 <h1 md-dialog-title>{{widgetTitle}}</h1>
 <div md-dialog-content>
   <md-input-container class="dialog__textarea">
-    <input mdInput placeholder="Title" value="Some title" #newNoteTitle>
+    <input mdInput placeholder="Title" value="Some title" #newNoteTitle required>
   </md-input-container>
   <md-input-container class="dialog__textfield">
-    <textarea mdInput placeholder="Description" value="Some description" #newNoteDescription></textarea>
+    <textarea mdInput placeholder="Description" value="Some description" #newNoteDescription required>Sample description</textarea>
   </md-input-container>
 </div>
 <div md-dialog-actions>
   <button md-button md-dialog-close="Close">Close</button>
-  <button md-button md-dialog-close="Submit" (click)="createNote(newNoteTitle.value, newNoteDescription.value)">
+  <button md-button md-dialog-close="Submit" (click)="createNote(newNoteTitle.value, newNoteDescription.value)"
+          [disabled]="isInvalid(newNoteTitle.value, newNoteDescription.value)">
     Submit
   </button>
 </div>
