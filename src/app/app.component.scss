@@ -1,21 +1,23 @@
-.c-nav-list {
-  width: 17%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &__anchor {
-    display: block;
-    position: relative;
-    padding-top: 4%;
-    height: 8%;
-    width: 100%;
-    font-size: 1.2em;
-  }
-}
+@import "_variables";
 
 .c-sidenav {
   position: fixed;
   height: 100%;
   width: 100%;
+
+  &__list {
+    width: 17%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__anchor {
+    display: block;
+    position: relative;
+    padding-top: $smallPadding;
+    height: 8%;
+    width: 100%;
+    font-size: 1.2em;
+  }
 }

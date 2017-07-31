@@ -31,3 +31,12 @@ textarea {
     font-family: $bad-script-font;
   }
 }
+
+.widget {
+  font-size: 5em;
+  font-family: $bad-script-font;
+
+  &--center {
+    text-align: center;
+  }
+}

@@ -1,6 +1,8 @@
-.add-note-dialog,
-.md-input-container {
-  width: 100%;
-  height: 100%;
-  display: block;
+.dialog {
+  &__textfield,
+  &__textarea {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
 }

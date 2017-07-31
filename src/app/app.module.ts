@@ -9,10 +9,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './notes/memory-database/in-memory-data.service';
 
 import {
-  MdButtonModule,
-  MdButtonToggleModule, MdCardModule,
-  MdDialogModule,
-  MdIconModule,
+  MdButtonModule, MdButtonToggleModule, MdCardModule, MdDialogModule, MdIconModule,
   MdInputModule, MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -72,7 +69,7 @@ import 'hammerjs/hammer';
         pathMatch: 'full',
       },
     ]),
-    InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 50}),
+    InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 100}),
   ],
   providers: [NoteService],
   bootstrap: [AppComponent],

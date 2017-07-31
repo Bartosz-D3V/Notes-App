@@ -1,12 +1,10 @@
 <h1 md-dialog-title>{{title}}</h1>
 <div md-dialog-content>
-  <md-input-container class="md-input-container">
-    <input mdInput class="add-note-dialog" placeholder="Title" value="Some title" id="note-dialog-title">
+  <md-input-container class="dialog__textarea">
+    <input mdInput placeholder="Title" value="Some title" id="note-dialog-title">
   </md-input-container>
-  <md-input-container class="md-input-container">
-    <textarea mdInput class="add-note-dialog" placeholder="Description" value="Some description"
-              id="note-dialog-description">
-    </textarea>
+  <md-input-container class="dialog__textfield">
+    <textarea mdInput placeholder="Description" value="Some description" id="note-dialog-description"></textarea>
   </md-input-container>
 </div>
 <div md-dialog-actions>
