@@ -40,4 +40,16 @@ export class NoteService {
       .catch(NoteService.handleError);
   }
 
+  create(title: string, description: string): void {
+    const lastNoteId = this.getNotes().then(notes => {
+      return notes.length;
+    });
+    const note: Note = new Note(5, title, description);
+    this.http
+      .post(this.notesUrl, JSON.stringify(note))
+      .toPromise()
+      .then(() => note)
+      .catch(NoteService.handleError);
+  }
+
 }
