@@ -6,6 +6,7 @@ import { NotesListComponent } from './notes-list.component';
 import { NoteComponent } from '../note/note.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { MdCardModule } from '@angular/material';
 
 describe('NotesListComponent', () => {
   let component: NotesListComponent;
@@ -19,7 +20,8 @@ describe('NotesListComponent', () => {
       ],
       imports: [
         HttpModule,
-        FormsModule
+        FormsModule,
+        MdCardModule
       ],
     })
       .compileComponents();

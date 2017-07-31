@@ -6,6 +6,7 @@ import { expect, assert } from 'chai';
 
 import { NoteComponent } from './note.component';
 import { Note } from './note';
+import { MdCardModule } from '@angular/material';
 
 
 describe('NoteComponent', () => {
@@ -16,7 +17,7 @@ describe('NoteComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NoteComponent],
-      imports: [HttpModule, FormsModule],
+      imports: [HttpModule, FormsModule, MdCardModule],
     })
       .compileComponents();
   }));

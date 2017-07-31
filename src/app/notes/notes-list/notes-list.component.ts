@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Note } from '../note/note';
 import { NoteService } from '../notes-service/note.service';
+import { NotesList } from './notes-list';
 
 @Component({
   selector: 'app-notes-list',
   templateUrl: './notes-list.component.html',
   providers: [NoteService],
 })
-export class NotesListComponent implements OnInit {
+export class NotesListComponent implements OnInit, NotesList {
 
   @Input()
   filter: string;
