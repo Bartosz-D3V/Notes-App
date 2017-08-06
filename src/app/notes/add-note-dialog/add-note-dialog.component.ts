@@ -7,7 +7,6 @@ import { Note } from '../note/note';
   selector: 'app-add-note-dialog',
   templateUrl: './add-note-dialog.component.html',
   styleUrls: ['./add-note-dialog.scss'],
-  providers: [NoteService],
 })
 export class AddNoteDialogComponent {
 
@@ -16,12 +15,12 @@ export class AddNoteDialogComponent {
   constructor(public dialogRef: MdDialogRef<AddNoteDialogComponent>, private noteService: NoteService) {
   }
 
-  createNote(title: string, description: string): void {
-    this.noteService.create(title, description);
+  createNote(id: HTMLInputElement, title: HTMLInputElement, description: HTMLInputElement): void {
+    this.noteService.create(+id.value, title.value, description.value).subscribe();
   }
 
-  isInvalid(title: string, description: string): boolean {
-    return (title === '' || description === '');
+  isInvalid(id: HTMLInputElement, title: HTMLInputElement, description: HTMLInputElement): boolean {
+    return (id.value === '' || title.value === '' || description.value === '');
   }
 
 }

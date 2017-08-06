@@ -1,14 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Note } from '../note/note';
 import { NoteService } from '../notes-service/note.service';
-import { NotesList } from './notes-list';
 
 @Component({
   selector: 'app-notes-list',
   templateUrl: './notes-list.component.html',
-  providers: [NoteService],
 })
-export class NotesListComponent implements OnInit, NotesList {
+export class NotesListComponent implements OnInit {
 
   @Input()
   filter: string;
@@ -21,13 +19,9 @@ export class NotesListComponent implements OnInit, NotesList {
     this.noteService
       .getNotes()
       .subscribe(
-        (notes) => {
-          this.notes = notes['data']
-            .filter((note) =>
-              !note._done && !note._deleted && !note._starred)
-          console.log(this.notes)
-
-        }
+        notes => this.notes = notes['data']
+          .filter((note) =>
+            !note._done && !note._deleted && !note._starred)
       );
   }
 
@@ -65,7 +59,6 @@ export class NotesListComponent implements OnInit, NotesList {
     this.noteService
       .update(note)
       .subscribe();
-    this.retrieveNotes();
   }
 
   retrieveNotes(): void {

@@ -5,17 +5,16 @@ import { Note } from '../note/note';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class NoteService {
 
   private notesUrl = 'app/notes';
-  private headers = new Headers({
+  private headers: Headers = new Headers({
     'Content-Type': 'application/json',
   });
-  private options = new RequestOptions({
-    headers: this.headers
+  private options: RequestOptions = new RequestOptions({
+    headers: this.headers,
   });
 
   constructor(private http: Http) {
@@ -23,7 +22,7 @@ export class NoteService {
 
   getNotes(): Observable<Array<Note>> {
     return this.http
-      .get(this.notesUrl)
+      .get(this.notesUrl, this.options)
       .map((response) => <Note[]> response.json());
   }
 
@@ -34,16 +33,12 @@ export class NoteService {
       .map((response: Response) => <Note[]> response.json());
   }
 
-  create(title: string, description: string): void {
-    // const lastNoteId = this.getNotes().then(notes => {
-    //   return notes.length;
-    // });
-    // const note: Note = new Note(5, title, description);
-    // this.http
-    //   .post(this.notesUrl, JSON.stringify(note))
-    //   .toPromise()
-    //   .then(() => note)
-    //   .catch(NoteService.handleError);
+  create(id: number, title: string, description: string): Observable<Array<Note>> {
+    const url = `${this.notesUrl}/${id}`;
+    const note: Note = new Note(id, title, description);
+    return this.http
+      .post(url, JSON.stringify(note), this.options)
+      .map((response: Response) => <Note[]> response.json());
   }
 
 }

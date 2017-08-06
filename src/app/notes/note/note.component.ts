@@ -7,7 +7,6 @@ import { NoteService } from '../notes-service/note.service';
   selector: 'app-note',
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.scss'],
-  providers: [NoteService],
 })
 export class NoteComponent {
 
