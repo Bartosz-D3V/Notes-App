@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-
-import 'rxjs/add/operator/toPromise';
+import { Headers, Http, Response } from '@angular/http';
 
 import { Note } from '../note/note';
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class NoteService {
@@ -21,35 +23,29 @@ export class NoteService {
   constructor(private http: Http) {
   }
 
-  getNotes(): Promise<Array<Note>> {
+  getNotes(): Observable<Array<Note>> {
     return this.http
       .get(this.notesUrl)
-      .toPromise()
-      .then((response) => {
-        return response.json().data as Note[];
-      })
-      .catch(NoteService.handleError);
+      .map((response) => <Note[]> response.json());
   }
 
-  update(note: Note): Promise<Note> {
+  update(note: Note): Observable<Note> {
     const url = `${this.notesUrl}/${note.id}`;
     return this.http
       .put(url, JSON.stringify(note), {headers: this.headers})
-      .toPromise()
-      .then(() => note)
-      .catch(NoteService.handleError);
+      .map((response) => <Note> response.json());
   }
 
   create(title: string, description: string): void {
-    const lastNoteId = this.getNotes().then(notes => {
-      return notes.length;
-    });
-    const note: Note = new Note(5, title, description);
-    this.http
-      .post(this.notesUrl, JSON.stringify(note))
-      .toPromise()
-      .then(() => note)
-      .catch(NoteService.handleError);
+    // const lastNoteId = this.getNotes().then(notes => {
+    //   return notes.length;
+    // });
+    // const note: Note = new Note(5, title, description);
+    // this.http
+    //   .post(this.notesUrl, JSON.stringify(note))
+    //   .toPromise()
+    //   .then(() => note)
+    //   .catch(NoteService.handleError);
   }
 
 }

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 import { NoteService } from '../notes-service/note.service';
+import { Note } from '../note/note';
 
 @Component({
   selector: 'app-add-note-dialog',
@@ -13,7 +14,6 @@ export class AddNoteDialogComponent {
   private widgetTitle = 'What you would like to do?';
 
   constructor(public dialogRef: MdDialogRef<AddNoteDialogComponent>, private noteService: NoteService) {
-    this.noteService = noteService;
   }
 
   createNote(title: string, description: string): void {

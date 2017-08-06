@@ -13,25 +13,23 @@ export class NoteComponent {
 
   @Input()
   note: Note;
-  @Output()
-  change: EventEmitter<Note> = new EventEmitter();
+
+  constructor(private noteService: NoteService) {
+  }
 
   markAsDone(): void {
     this.note._done = true;
-    this.change.emit(this.note);
   }
 
   markAsDiscarded(): void {
     this.note._deleted = true;
-    this.change.emit(this.note);
   }
 
   markAsStarred(): void {
     this.note._starred = true;
-    this.change.emit(this.note);
   }
 
   updateNote(): void {
-    this.change.emit(this.note);
+    this.noteService.update(this.note);
   }
 }

@@ -16,50 +16,55 @@ export class NotesListComponent implements OnInit, NotesList {
   private error: any;
 
   constructor(private noteService: NoteService) {
-    this.noteService = noteService;
   }
 
   getRemainingNotes(): void {
     this.noteService
       .getNotes()
-      .then(notes => {
-        this.notes = notes.filter((note) => !note._done && !note._deleted && !note._starred);
-      })
-      .catch((error) => this.error = error);
+      .subscribe(
+        notes => this.notes = notes['data']
+          .filter((note) =>
+            !note._done && !note._deleted && !note._starred),
+        error => this.error = error
+      );
   }
 
   getStarredNotes(): void {
     this.noteService
       .getNotes()
-      .then(notes => {
-        this.notes = notes.filter((note) => note._starred && !note._deleted);
-      })
-      .catch((error) => this.error = error);
+      .subscribe(
+        notes => this.notes = notes['data']
+          .filter((note) =>
+            note._starred && !note._deleted),
+        error => this.error = error
+      );
   }
 
   getDoneNotes(): void {
     this.noteService
       .getNotes()
-      .then(notes => {
-        this.notes = notes.filter((note) => note._done && !note._deleted && !note._starred);
-      })
-      .catch((error) => this.error = error);
+      .subscribe(
+        notes => this.notes = notes['data']
+          .filter((note) =>
+            note._done && !note._deleted && !note._starred),
+        error => this.error = error
+      );
   }
 
   getDeletedNotes(): void {
     this.noteService
       .getNotes()
-      .then(notes => {
-        this.notes = notes.filter((note) => note._deleted);
-      })
-      .catch((error) => this.error = error);
+      .subscribe(
+        notes => this.notes = notes['data']
+          .filter((note) =>
+            note._deleted),
+        error => this.error = error
+      );
   }
 
   updateNote(note): void {
     this.noteService
-      .update(note)
-      .catch((error) => this.error = error);
-    this.retrieveNotes();
+      .update(note);
   }
 
   retrieveNotes(): void {
