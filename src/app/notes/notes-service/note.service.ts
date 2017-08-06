@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
 
 import { Note } from '../note/note';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class NoteService {
@@ -14,11 +14,9 @@ export class NoteService {
   private headers = new Headers({
     'Content-Type': 'application/json',
   });
-
-  private static handleError(error: any): Promise<any> {
-    console.error('An error occurred: ', error);
-    return Promise.reject(error.message || error);
-  }
+  private options = new RequestOptions({
+    headers: this.headers
+  });
 
   constructor(private http: Http) {
   }
@@ -29,11 +27,11 @@ export class NoteService {
       .map((response) => <Note[]> response.json());
   }
 
-  update(note: Note): Observable<Note> {
+  update(note: Note): Observable<Array<Note>> {
     const url = `${this.notesUrl}/${note.id}`;
     return this.http
-      .put(url, JSON.stringify(note), {headers: this.headers})
-      .map((response) => <Note> response.json());
+      .put(url, JSON.stringify(note), this.options)
+      .map((response: Response) => <Note[]> response.json());
   }
 
   create(title: string, description: string): void {

@@ -13,7 +13,6 @@ export class NotesListComponent implements OnInit, NotesList {
   @Input()
   filter: string;
   private notes: Note[];
-  private error: any;
 
   constructor(private noteService: NoteService) {
   }
@@ -22,10 +21,13 @@ export class NotesListComponent implements OnInit, NotesList {
     this.noteService
       .getNotes()
       .subscribe(
-        notes => this.notes = notes['data']
-          .filter((note) =>
-            !note._done && !note._deleted && !note._starred),
-        error => this.error = error
+        (notes) => {
+          this.notes = notes['data']
+            .filter((note) =>
+              !note._done && !note._deleted && !note._starred)
+          console.log(this.notes)
+
+        }
       );
   }
 
@@ -35,8 +37,7 @@ export class NotesListComponent implements OnInit, NotesList {
       .subscribe(
         notes => this.notes = notes['data']
           .filter((note) =>
-            note._starred && !note._deleted),
-        error => this.error = error
+            note._starred && !note._deleted)
       );
   }
 
@@ -46,8 +47,7 @@ export class NotesListComponent implements OnInit, NotesList {
       .subscribe(
         notes => this.notes = notes['data']
           .filter((note) =>
-            note._done && !note._deleted && !note._starred),
-        error => this.error = error
+            note._done && !note._deleted && !note._starred)
       );
   }
 
@@ -57,14 +57,15 @@ export class NotesListComponent implements OnInit, NotesList {
       .subscribe(
         notes => this.notes = notes['data']
           .filter((note) =>
-            note._deleted),
-        error => this.error = error
+            note._deleted)
       );
   }
 
   updateNote(note): void {
     this.noteService
-      .update(note);
+      .update(note)
+      .subscribe();
+    this.retrieveNotes();
   }
 
   retrieveNotes(): void {
