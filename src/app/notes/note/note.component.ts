@@ -13,7 +13,7 @@ export class NoteComponent {
   @Input()
   note: Note;
   @Output()
-  change: EventEmitter<Note> = new EventEmitter();
+  change: EventEmitter<Note> = new EventEmitter(true);
 
   markAsDone(): void {
     this.note._done = true;

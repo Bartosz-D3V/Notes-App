@@ -13,6 +13,9 @@ export class NotesListComponent implements OnInit {
   private notes: Note[];
 
   constructor(private noteService: NoteService) {
+    // this.noteService.publishedNote$.subscribe(
+    //   data => this.notes[data.id]  = (data)
+    // );
   }
 
   getRemainingNotes(): void {
@@ -58,7 +61,9 @@ export class NotesListComponent implements OnInit {
   updateNote(note): void {
     this.noteService
       .update(note)
-      .subscribe();
+      .subscribe(
+        success => this.retrieveNotes()
+      );
   }
 
   retrieveNotes(): void {
