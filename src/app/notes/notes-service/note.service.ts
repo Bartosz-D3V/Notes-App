@@ -34,7 +34,8 @@ export class NoteService {
       .subscribe(
         notes => {
           this._notes.next(notes['data']);
-        }
+        },
+        error => console.log(error)
       );
   }
 
@@ -44,9 +45,11 @@ export class NoteService {
       .put(url, JSON.stringify(note), this.options)
       .map((response: Response) => <Note> response.json())
       .subscribe(() => {
-        const notes = this._notes.getValue();
-        this._notes.next(notes);
-      });
+          const notes = this._notes.getValue();
+          this._notes.next(notes);
+        },
+        error => console.log(error)
+      );
   }
 
   create(id: number, title: string, description: string): Subscription {
@@ -56,10 +59,12 @@ export class NoteService {
       .post(url, JSON.stringify(note), this.options)
       .map((response: Response) => <Note> response.json())
       .subscribe(() => {
-        const notes = this._notes.getValue();
-        notes.push(note);
-        this._notes.next(notes);
-      });
+          const notes = this._notes.getValue();
+          notes.push(note);
+          this._notes.next(notes);
+        },
+        error => console.log(error)
+      );
   }
 
 }
