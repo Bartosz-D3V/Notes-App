@@ -1,6 +1,5 @@
-<div class="mdl-grid">
-  <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-smartphone"
-       *ngFor="let note of notes">
+<div class="c-md-list">
+  <div class="c-md-list__list-element" *ngFor="let note of notes">
     <app-note [note]="note" (change)="updateNote(note)"></app-note>
   </div>
 </div>

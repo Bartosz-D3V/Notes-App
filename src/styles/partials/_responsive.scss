@@ -1,0 +1,19 @@
+@import "variables";
+
+@mixin phone-width($width) {
+  @media only screen and (max-width: $mobileEnd) {
+    width: $width;
+  }
+}
+
+@mixin tablet-width($width) {
+  @media only screen and (min-width: $tabletStart) {
+    width: $width;
+  }
+}
+
+@mixin desktop-width($width) {
+  @media only screen and (min-width: $desktopStart) {
+    width: $width;
+  }
+}

@@ -1,0 +1,17 @@
+@import "_variables";
+@import "_responsive";
+
+.c-md-list {
+  width: $fullScreenContentWidth;
+  margin-left: $smallResPadding;
+
+  &__list-element {
+    display: inline-block;
+    margin-right: $smallPadding;
+    margin-top: $smallPadding;
+
+    @include phone-width(90%);
+    @include tablet-width(48%);
+    @include desktop-width(32%);
+  }
+}
