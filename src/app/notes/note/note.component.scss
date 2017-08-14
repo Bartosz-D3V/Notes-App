@@ -17,22 +17,22 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    padding-left: $smallPadding;
-    padding-right: $smallPadding;
-    padding-top: $smallPadding;
+    margin-left: $smallPadding;
+    margin-right: $smallPadding;
+    margin-top: $smallPadding;
   }
 
   &__textarea {
-    width: 100%;
+    width: 95%;
     height: 100%;
     resize: none;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: justify;
     max-lines: 3;
-    padding-left: $smallPadding;
-    padding-right: $smallPadding;
-    padding-top: $smallPadding;
+    margin-left: $smallPadding;
+    margin-right: $smallPadding;
+    margin-top: $smallPadding;
 
     &--transparent {
       @include transparent();
@@ -40,8 +40,7 @@
   }
 
   &__input {
-    width: 75%;
-    height: 100%;
+    width: 70%;
     resize: none;
     display: inline;
     font-size: 2em;
@@ -52,8 +51,7 @@
   }
 
   &__btn {
-    width: 10%;
-    display: inline;
+    width: 20%;
   }
 
   &__actions,
@@ -61,7 +59,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    padding-left: $smallPadding;
-    padding-right: $smallPadding;
+    margin-left: $smallPadding;
+    margin-right: $smallPadding;
   }
 }

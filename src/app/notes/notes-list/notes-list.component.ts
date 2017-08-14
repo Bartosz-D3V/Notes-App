@@ -1,64 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Note } from '../note/note';
 import { NoteService } from '../notes-service/note.service';
-import { NotesList } from './notes-list';
 
 @Component({
   selector: 'app-notes-list',
   templateUrl: './notes-list.component.html',
-  providers: [NoteService],
+  styleUrls: ['./notes-list.component.scss'],
 })
-export class NotesListComponent implements OnInit, NotesList {
+export class NotesListComponent implements OnInit {
 
   @Input()
   filter: string;
   private notes: Note[];
-  private error: any;
 
   constructor(private noteService: NoteService) {
-    this.noteService = noteService;
   }
 
-  getRemainingNotes(): void {
-    this.noteService
-      .getNotes()
-      .then(notes => {
-        this.notes = notes.filter((note) => !note._done && !note._deleted && !note._starred);
-      })
-      .catch((error) => this.error = error);
-  }
-
-  getStarredNotes(): void {
-    this.noteService
-      .getNotes()
-      .then(notes => {
-        this.notes = notes.filter((note) => note._starred && !note._deleted);
-      })
-      .catch((error) => this.error = error);
-  }
-
-  getDoneNotes(): void {
-    this.noteService
-      .getNotes()
-      .then(notes => {
-        this.notes = notes.filter((note) => note._done && !note._deleted && !note._starred);
-      })
-      .catch((error) => this.error = error);
-  }
-
-  getDeletedNotes(): void {
-    this.noteService
-      .getNotes()
-      .then(notes => {
-        this.notes = notes.filter((note) => note._deleted);
-      })
-      .catch((error) => this.error = error);
-  }
-
-  updateNote(note): void {
-    this.noteService
-      .update(note)
-      .catch((error) => this.error = error);
+  ngOnInit() {
     this.retrieveNotes();
   }
 
@@ -79,8 +37,49 @@ export class NotesListComponent implements OnInit, NotesList {
     }
   }
 
-  ngOnInit() {
-    this.retrieveNotes();
+  getRemainingNotes(): void {
+    this.noteService
+      .notes
+      .subscribe(
+        notes =>
+          this.notes = notes.filter((note) =>
+            !note._done && !note._deleted && !note._starred)
+      );
+  }
+
+  getStarredNotes(): void {
+    this.noteService
+      .notes
+      .subscribe(
+        notes =>
+          this.notes = notes.filter((note) =>
+            note._starred && !note._deleted)
+      );
+  }
+
+  getDoneNotes(): void {
+    this.noteService
+      .notes
+      .subscribe(
+        notes =>
+          this.notes = notes.filter((note) =>
+            note._done && !note._deleted && !note._starred)
+      );
+  }
+
+  getDeletedNotes(): void {
+    this.noteService
+      .notes
+      .subscribe(
+        notes =>
+          this.notes = notes.filter((note) =>
+            note._deleted)
+      );
+  }
+
+  updateNote(note): void {
+    this.noteService
+      .update(note);
   }
 
 }

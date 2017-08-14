@@ -1,4 +1,5 @@
 @import "_variables";
+@import "_responsive";
 
 .c-sidenav {
   position: fixed;
@@ -6,7 +7,10 @@
   width: 100%;
 
   &__list {
-    width: 17%;
+    @include phone-width(50%);
+    @include tablet-width(30%);
+    @include desktop-width(20%);
+
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -10,6 +10,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { MdDialogModule, MdIconModule } from '@angular/material';
+import { NoteService } from '../notes-service/note.service';
 
 describe('NoteWrapperComponent', () => {
   let component: NoteWrapperComponent;
@@ -29,7 +30,8 @@ describe('NoteWrapperComponent', () => {
         FormsModule,
         MdIconModule,
         MdDialogModule
-      ]
+      ],
+      providers: [NoteService],
     })
       .compileComponents();
   }));

@@ -6,22 +6,20 @@ import { NoteService } from '../notes-service/note.service';
   selector: 'app-add-note-dialog',
   templateUrl: './add-note-dialog.component.html',
   styleUrls: ['./add-note-dialog.scss'],
-  providers: [NoteService],
 })
 export class AddNoteDialogComponent {
 
-  private widgetTitle = 'What you would like to do?';
+  private widgetTitle = 'What would you like to do?';
 
   constructor(public dialogRef: MdDialogRef<AddNoteDialogComponent>, private noteService: NoteService) {
-    this.noteService = noteService;
   }
 
-  createNote(title: string, description: string): void {
-    this.noteService.create(title, description);
+  createNote(id: HTMLInputElement, title: HTMLInputElement, description: HTMLInputElement): void {
+    this.noteService.create(+id.value, title.value, description.value);
   }
 
-  isInvalid(title: string, description: string): boolean {
-    return (title === '' || description === '');
+  isInvalid(id: HTMLInputElement, title: HTMLInputElement, description: HTMLInputElement): boolean {
+    return (id.value === '' || title.value === '' || description.value === '');
   }
 
 }

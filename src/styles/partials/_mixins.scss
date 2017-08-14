@@ -2,7 +2,8 @@
   background: transparent none;
   border: none;
 
-  &:focus {
+  &:focus,
+  &:hover {
     border: none;
     outline: none;
   }
@@ -10,7 +11,5 @@
 
 @mixin light-border($color) {
   background: transparent none;
-  border-color: $color;
-  border-width: 3px;
-  border-style: solid;
+  border: 3px solid $color;
 }

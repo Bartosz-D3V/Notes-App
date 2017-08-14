@@ -7,14 +7,13 @@ import { NoteService } from '../notes-service/note.service';
   selector: 'app-note',
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.scss'],
-  providers: [NoteService],
 })
 export class NoteComponent {
 
   @Input()
   note: Note;
   @Output()
-  change: EventEmitter<Note> = new EventEmitter();
+  change: EventEmitter<Note> = new EventEmitter(true);
 
   markAsDone(): void {
     this.note._done = true;

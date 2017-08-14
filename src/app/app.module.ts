@@ -9,10 +9,11 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './notes/memory-database/in-memory-data.service';
 
 import {
-  MdButtonModule, MdButtonToggleModule, MdCardModule, MdDialogModule, MdIconModule,
+  MdButtonModule, MdButtonToggleModule, MdCardModule, MdDialogModule, MdGridListModule, MdIconModule,
   MdInputModule, MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
 import { NoteComponent } from './notes/note/note.component';
 import { NoteService } from './notes/notes-service/note.service';
@@ -21,6 +22,7 @@ import { AddNoteButtonComponent } from './notes/add-note-button/add-note-button.
 import { AboutComponent } from './about/about.component';
 import { NoteWrapperComponent } from './notes/note-wrapper/note-wrapper.component';
 import { AddNoteDialogComponent } from './notes/add-note-dialog/add-note-dialog.component';
+
 import 'hammerjs/hammer';
 
 @NgModule({
@@ -48,6 +50,7 @@ import 'hammerjs/hammer';
     MdSliderModule,
     MdToolbarModule,
     MdSlideToggleModule,
+    MdGridListModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {
