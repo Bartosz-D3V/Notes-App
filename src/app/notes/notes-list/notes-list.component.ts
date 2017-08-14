@@ -13,57 +13,10 @@ export class NotesListComponent implements OnInit {
   private notes: Note[];
 
   constructor(private noteService: NoteService) {
-    // this.noteService.publishedNote$.subscribe(
-    //   data => this.notes[data.id]  = (data)
-    // );
   }
 
-  getRemainingNotes(): void {
-    this.noteService
-      .getNotes()
-      .subscribe(
-        notes => this.notes = notes['data']
-          .filter((note) =>
-            !note._done && !note._deleted && !note._starred)
-      );
-  }
-
-  getStarredNotes(): void {
-    this.noteService
-      .getNotes()
-      .subscribe(
-        notes => this.notes = notes['data']
-          .filter((note) =>
-            note._starred && !note._deleted)
-      );
-  }
-
-  getDoneNotes(): void {
-    this.noteService
-      .getNotes()
-      .subscribe(
-        notes => this.notes = notes['data']
-          .filter((note) =>
-            note._done && !note._deleted && !note._starred)
-      );
-  }
-
-  getDeletedNotes(): void {
-    this.noteService
-      .getNotes()
-      .subscribe(
-        notes => this.notes = notes['data']
-          .filter((note) =>
-            note._deleted)
-      );
-  }
-
-  updateNote(note): void {
-    this.noteService
-      .update(note)
-      .subscribe(
-        success => this.retrieveNotes()
-      );
+  ngOnInit() {
+    this.retrieveNotes();
   }
 
   retrieveNotes(): void {
@@ -83,8 +36,49 @@ export class NotesListComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.retrieveNotes();
+  getRemainingNotes(): void {
+    this.noteService
+      .notes
+      .subscribe(
+        notes =>
+          this.notes = notes.filter((note) =>
+            !note._done && !note._deleted && !note._starred)
+      );
+  }
+
+  getStarredNotes(): void {
+    this.noteService
+      .notes
+      .subscribe(
+        notes =>
+          this.notes = notes.filter((note) =>
+            note._starred && !note._deleted)
+      );
+  }
+
+  getDoneNotes(): void {
+    this.noteService
+      .notes
+      .subscribe(
+        notes =>
+          this.notes = notes.filter((note) =>
+            note._done && !note._deleted && !note._starred)
+      );
+  }
+
+  getDeletedNotes(): void {
+    this.noteService
+      .notes
+      .subscribe(
+        notes =>
+          this.notes = notes.filter((note) =>
+            note._deleted)
+      );
+  }
+
+  updateNote(note): void {
+    this.noteService
+      .update(note);
   }
 
 }

@@ -15,7 +15,7 @@ export class AddNoteDialogComponent {
   }
 
   createNote(id: HTMLInputElement, title: HTMLInputElement, description: HTMLInputElement): void {
-    this.noteService.create(+id.value, title.value, description.value).subscribe();
+    this.noteService.create(+id.value, title.value, description.value);
   }
 
   isInvalid(id: HTMLInputElement, title: HTMLInputElement, description: HTMLInputElement): boolean {

@@ -9,7 +9,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './notes/memory-database/in-memory-data.service';
 
 import {
-  MdButtonModule, MdButtonToggleModule, MdCardModule, MdDialogModule, MdIconModule,
+  MdButtonModule, MdButtonToggleModule, MdCardModule, MdDialogModule, MdGridListModule, MdIconModule,
   MdInputModule, MdSidenavModule, MdSliderModule, MdSlideToggleModule, MdToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,6 +50,7 @@ import 'hammerjs/hammer';
     MdSliderModule,
     MdToolbarModule,
     MdSlideToggleModule,
+    MdGridListModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {
