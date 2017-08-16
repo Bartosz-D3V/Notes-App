@@ -46,6 +46,11 @@ export class NoteService {
       .map((response: Response) => <Note> response.json())
       .subscribe(() => {
           const notes = this._notes.getValue();
+          const updateNoteIndex = notes.indexOf(notes.find((element) => {
+            return note.id === element.id;
+          }));
+          notes.splice(updateNoteIndex, 1);
+          notes.splice(updateNoteIndex, 0, note);
           this._notes.next(notes);
         },
         error => console.log(error)

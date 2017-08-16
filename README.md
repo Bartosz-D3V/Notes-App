@@ -1,28 +1,44 @@
-# NotesApp
+# Notes App - Angular 4 & RxJS showcase app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.4.
+_Simple application created using Angular CLI, Angular Material 2, Angular 4 and RxJS._
+<br>
+<p align="center">
+<a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/npm/l/express.svg" alt="MIT License"></a>
+<a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/npm/v/lockerjs.svg" alt="npm version"></a>
+<a href="https://travis-ci.org/Bartosz-D3V/Locker.js"><img src="https://travis-ci.org/Bartosz-D3V/Locker.js.svg?branch=master" alt="Build Status"></a>
+<a href="https://ci.appveyor.com/project/Bartosz-D3V/locker-js"><img src="https://ci.appveyor.com/api/projects/status/ceq04cukdgoci2eq?svg=true" alt="Build Status"></a>
+<a href="https://codecov.io/gh/Bartosz-D3V/Locker.JS">
+  <img src="https://codecov.io/gh/Bartosz-D3V/Locker.JS/branch/master/graph/badge.svg" alt="Codecov" />
+</a>
+<a href="https://codeclimate.com/github/Bartosz-D3V/Locker.js"><img src="https://codeclimate.com/github/Bartosz-D3V/Locker.js/badges/gpa.svg" /></a>
+<a href="https://david-dm.org/bartosz-d3v/lockerjs" title="dependencies status"><img src="https://david-dm.org/bartosz-d3v/lockerjs/status.svg"/></a>
+<a href="https://david-dm.org/bartosz-d3v/lockerjs/?type=dev"><img src="https://david-dm.org/bartosz-d3v/lockerjs/dev-status.svg" alt="devDependency Status"></a>
+<a href="https://inch-ci.org/github/Bartosz-D3V/locker.js"><img src="http://inch-ci.org/github/Bartosz-D3V/Locker.JS.svg?branch=master" alt="Inline docs"></a>
+</p>
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation and Set-up
+```batch
+npm install
+npm start
+```
+Application is now available at localhost:4200
 
-## Code scaffolding
+## Running tests
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+### Unit tests
+```batch
+npm test
+```
 
-## Build
+### End-to-end (e2e) tests
+```batch
+npm e2e
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Description
+Application allows to create and manage notes. All notes can be editable, moved to 'starred' folder, 'done' folder, or discarded.
+Sidenav allows to switch between views and access external links.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+##License
+MIT

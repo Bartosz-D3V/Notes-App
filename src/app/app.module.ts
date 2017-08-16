@@ -22,6 +22,7 @@ import { AddNoteButtonComponent } from './notes/add-note-button/add-note-button.
 import { AboutComponent } from './about/about.component';
 import { NoteWrapperComponent } from './notes/note-wrapper/note-wrapper.component';
 import { AddNoteDialogComponent } from './notes/add-note-dialog/add-note-dialog.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import 'hammerjs/hammer';
 
@@ -34,6 +35,7 @@ import 'hammerjs/hammer';
     AboutComponent,
     NoteWrapperComponent,
     AddNoteDialogComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +72,10 @@ import 'hammerjs/hammer';
         path: 'about',
         component: AboutComponent,
         pathMatch: 'full',
+      },
+      {
+        path: '**',
+        component: PageNotFoundComponent,
       },
     ]),
     InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 100}),
