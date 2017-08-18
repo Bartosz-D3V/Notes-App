@@ -40,5 +40,5 @@ npm e2e
 Application allows to create and manage notes. All notes can be editable, moved to 'starred' folder, 'done' folder, or discarded.
 Sidenav allows to switch between views and access external links.
 
-##License
+## License
 MIT

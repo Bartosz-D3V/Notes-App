@@ -19,12 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss",
-        "../node_modules/material-design-lite/material.min.css"
+        "styles.scss"
       ],
-      "scripts": [
-        "../node_modules/material-design-lite/material.min.js"
-      ],
+      "scripts": [],
       "stylePreprocessorOptions": {
         "includePaths": [
           "styles/partials"

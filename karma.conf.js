@@ -15,10 +15,11 @@ module.exports = function (config) {
       require('@angular/cli/plugins/karma')
     ],
     client: {
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false,
     },
     files: [
-      {pattern: './src/test.ts', watched: false}
+      {pattern: './src/test.ts', watched: false},
+      'node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css'
     ],
     preprocessors: {
       './src/test.ts': ['@angular/cli']

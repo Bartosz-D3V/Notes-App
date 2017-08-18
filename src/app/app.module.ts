@@ -39,6 +39,7 @@ import 'hammerjs/hammer';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     CommonModule,
@@ -53,7 +54,6 @@ import 'hammerjs/hammer';
     MdToolbarModule,
     MdSlideToggleModule,
     MdGridListModule,
-    BrowserAnimationsModule,
     RouterModule.forRoot([
       {
         path: '',
