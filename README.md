@@ -33,7 +33,7 @@ npm test
 
 ### End-to-end (e2e) tests
 ```batch
-npm e2e
+npm run e2e
 ```
 
 ## Description
