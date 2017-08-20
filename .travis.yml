@@ -30,11 +30,13 @@ before_install:
   - yarn global add @angular/cli
 
 before_script:
+  - sh -e /etc/init.d/xvfb start
+  - export DISPLAY=:99.0
   - yarn install
 
 script:
   - npm test
-  - npm e2e
+  - npm run e2e
 
 notifications:
   email:
