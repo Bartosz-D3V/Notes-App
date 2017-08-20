@@ -14,6 +14,8 @@ _Simple application created using Angular CLI, Angular Material 2, Angular 4 and
 <a href="https://david-dm.org/bartosz-d3v/Notes-App/?type=dev"><img src="https://david-dm.org/bartosz-d3v/Notes-App/dev-status.svg" alt="devDependency Status"></a>
 </p>
 
+## Live demo
+<a href="https://bartosz-d3v.github.io/Notes-App/">Live demo on GitHub-Pages</a>
 
 ## Installation and Set-up
 ```batch
