@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 export class NoteWrapperComponent implements OnInit, OnDestroy {
 
   public title = 'Notes app';
-  private filter: string;
+  public filter: string;
   private sub: any;
 
   constructor(private route: ActivatedRoute) {

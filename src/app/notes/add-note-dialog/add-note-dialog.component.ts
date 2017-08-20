@@ -9,7 +9,7 @@ import { NoteService } from '../notes-service/note.service';
 })
 export class AddNoteDialogComponent {
 
-  private widgetTitle = 'What would you like to do?';
+  public widgetTitle = 'What would you like to do?';
 
   constructor(public dialogRef: MdDialogRef<AddNoteDialogComponent>, private noteService: NoteService) {
   }

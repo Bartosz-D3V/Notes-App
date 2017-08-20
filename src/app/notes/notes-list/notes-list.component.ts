@@ -11,7 +11,7 @@ export class NotesListComponent implements OnInit {
 
   @Input()
   filter: string;
-  private notes: Note[];
+  public notes: Note[];
 
   constructor(private noteService: NoteService) {
   }
