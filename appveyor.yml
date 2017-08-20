@@ -24,7 +24,7 @@ build_script:
 
 test_script:
   - npm test
-  - npm e2e
+  - npm run e2e
 
 build: off
 
