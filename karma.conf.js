@@ -10,6 +10,7 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chai'),
       require('karma-chrome-launcher'),
+      require('karma-coverage'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
@@ -22,7 +23,7 @@ module.exports = function (config) {
       'node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css'
     ],
     preprocessors: {
-      './src/test.ts': ['@angular/cli']
+      './src/test.ts': ['@angular/cli', 'coverage']
     },
     mime: {
       'text/x-typescript': ['ts', 'tsx']
@@ -30,8 +31,10 @@ module.exports = function (config) {
     coverageReporter: {
       reporters: [
         {type: 'text-summary'},
-        {type: 'lcovonly'},
-        'coverage-istanbul'
+        {type: 'lcov'},
+        'coverage-istanbul',
+        'progress',
+        'coverage'
       ]
     },
     coverageIstanbulReporter: {
