@@ -5,9 +5,10 @@ module.exports = function (config) {
   const path = require('path');
   config.set({
     basePath: '',
-    frameworks: ['jasmine', 'chai', '@angular/cli'],
+    frameworks: ['jasmine', 'chai-spies', 'chai', '@angular/cli'],
     plugins: [
       require('karma-jasmine'),
+      require('karma-chai-spies'),
       require('karma-chai'),
       require('karma-chrome-launcher'),
       require('karma-coverage'),
