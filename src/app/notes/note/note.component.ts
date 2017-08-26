@@ -15,18 +15,18 @@ export class NoteComponent {
   @Output()
   change: EventEmitter<Note> = new EventEmitter(true);
 
-  markAsDone(): void {
+  toggleDone(): void {
     this.note._done = true;
     this.change.emit(this.note);
   }
 
-  markAsDiscarded(): void {
+  toggleDiscarded(): void {
     this.note._deleted = true;
     this.change.emit(this.note);
   }
 
-  markAsStarred(): void {
-    this.note._starred = true;
+  toggleStarred(): void {
+    this.note._starred = !this.note._starred;
     this.change.emit(this.note);
   }
 

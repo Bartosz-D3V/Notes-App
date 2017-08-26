@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NoteComponent } from './notes/note/note.component';
 import { NoteService } from './notes/notes-service/note.service';
+import { EmitterService } from './notes/emitter-service/emitter.service';
 import { NotesListComponent } from './notes/notes-list/notes-list.component';
 import { AddNoteButtonComponent } from './notes/add-note-button/add-note-button.component';
 import { AboutComponent } from './about/about.component';
@@ -80,7 +81,7 @@ import 'hammerjs/hammer';
     ]),
     InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 100}),
   ],
-  providers: [NoteService],
+  providers: [NoteService, EmitterService],
   bootstrap: [AppComponent],
   entryComponents: [AddNoteDialogComponent],
 })
