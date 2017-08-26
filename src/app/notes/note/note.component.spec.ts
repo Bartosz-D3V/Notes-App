@@ -40,17 +40,17 @@ describe('NoteComponent', () => {
 
   describe('public API', () => {
     it('markAsDone method should set done parameter to true', () => {
-      component.markAsDone();
+      component.toggleDone();
       expect(component.note._done).to.be.true;
     });
 
     it('markAsDiscarded method should set discarded parameter to true', () => {
-      component.markAsDiscarded();
+      component.toggleDiscarded();
       expect(component.note._deleted).to.be.true;
     });
 
     it('markAsStarred method should set starred parameter to true', () => {
-      component.markAsStarred();
+      component.toggleStarred();
       expect(component.note._starred).to.be.true;
     });
   });

@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
   templateUrl: './notes-list.component.html',
   styleUrls: ['./notes-list.component.scss'],
 })
-export class NotesListComponent implements OnInit, OnChanges {
+export class NotesListComponent implements OnChanges {
 
   @Input()
   filter: string;
@@ -20,14 +20,12 @@ export class NotesListComponent implements OnInit, OnChanges {
   constructor(private noteService: NoteService) {
   }
 
-  ngOnInit() {
-    this.retrieveNotes();
-  }
-
   ngOnChanges() {
-    EmitterService.get(this.addId).subscribe((note: Note) => {
-      this.notes.push(note);
-    });
+    this.retrieveNotes();
+    EmitterService.get(this.addId)
+      .subscribe((note: Note) => {
+        this.notes.push(note);
+      });
   }
 
   retrieveNotes(): void {
@@ -63,7 +61,7 @@ export class NotesListComponent implements OnInit, OnChanges {
       .subscribe(
         notes =>
           this.notes = notes['data'].filter((note) =>
-            note._starred && !note._deleted)
+            note._starred && !note._done && !note._deleted)
       );
   }
 
@@ -73,7 +71,7 @@ export class NotesListComponent implements OnInit, OnChanges {
       .subscribe(
         notes =>
           this.notes = notes['data'].filter((note) =>
-            note._done && !note._deleted && !note._starred)
+            note._done && !note._starred && !note._deleted)
       );
   }
 
@@ -83,7 +81,7 @@ export class NotesListComponent implements OnInit, OnChanges {
       .subscribe(
         notes =>
           this.notes = notes['data'].filter((note) =>
-            note._deleted)
+            note._deleted && !note._starred)
       );
   }
 
@@ -91,11 +89,6 @@ export class NotesListComponent implements OnInit, OnChanges {
     this.noteService
       .update(note)
       .subscribe(() => {
-        const updateNoteIndex = this.notes.indexOf(this.notes.find((element) => {
-          return note.id === element.id;
-        }));
-        this.notes.splice(updateNoteIndex, 1);
-        this.notes.splice(updateNoteIndex, 0, note);
         this.retrieveNotes();
       });
   }

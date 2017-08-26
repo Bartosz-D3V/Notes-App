@@ -3,7 +3,7 @@
     <md-card-title class="c-md-card__title">
       <input title="" class="no-extra c-md-card__input c-md-card__input--transparent"
              [(ngModel)]="note.title" name="title" (blur)="updateNote($event)" placeholder="{{note?.title}}">
-      <button md-button class="c-md-card__btn" (click)="markAsStarred()">
+      <button md-button class="c-md-card__btn" (click)="toggleStarred()">
         <i class="material-icons">star_border</i>
       </button>
     </md-card-title>
@@ -15,7 +15,7 @@
     </textarea>
   </md-card-content>
   <md-card-actions class="c-md-card__actions c-md-card--border c-md-card--yellow">
-    <button md-button class="c-md-card__btn" (click)="markAsDone()">Done</button>
-    <button md-button class="c-md-card__btn" (click)="markAsDiscarded()">Discard</button>
+    <button md-button class="c-md-card__btn" (click)="toggleDone()">Done</button>
+    <button md-button class="c-md-card__btn" (click)="toggleDiscarded()">Discard</button>
   </md-card-actions>
 </md-card>
