@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 import { Note } from '../note/note';
 
@@ -18,6 +19,11 @@ export class NoteService {
     headers: this.headers,
   });
 
+  private static handleError(error: any): Observable<any> {
+    console.error('An error occurred', error);
+    throw Observable.throw(error.message || error);
+  }
+
   constructor(private http: Http) {
   }
 
@@ -25,7 +31,7 @@ export class NoteService {
     return this.http
       .get(this.notesUrl, this.options)
       .map((response) => <Note[]> response.json())
-      .catch((error: any) => Observable.throw(error.json().error));
+      .catch((error: any) => NoteService.handleError(error));
   }
 
   create(note: Note): Observable<Array<Note>> {
