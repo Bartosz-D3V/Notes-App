@@ -1,28 +1,27 @@
-import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { ReflectiveInjector } from '@angular/core';
+import { fakeAsync, tick } from '@angular/core/testing';
+import { BaseRequestOptions, ConnectionBackend, Http, RequestOptions } from '@angular/http';
+import { Response, ResponseOptions } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
-import { expect, assert } from 'chai';
 import * as spies from 'chai-spies';
 
 import { NoteService } from './note.service';
-import {
-  BaseRequestOptions, ConnectionBackend, Http, HttpModule, RequestOptions, ResponseOptions,
-  XHRBackend
-} from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
-import { ReflectiveInjector } from '@angular/core';
+import { Note } from '../note/note';
 
+const expect = chai.expect;
+const assert = chai.assert;
 chai.use(spies);
 describe('NoteService', () => {
 
+  const mockResponse = {
+    data: [
+      new Note(1, 'Task of the day!', 'Buy a milk.'),
+      new Note(2, 'If I will find time...', 'Go & buy groceries.')
+    ]
+  };
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpModule],
-      providers: [
-        NoteService,
-        MockBackend,
-        {provide: XHRBackend, useClass: MockBackend},
-      ]
-    });
     this.injector = ReflectiveInjector.resolveAndCreate([
       {provide: ConnectionBackend, useClass: MockBackend},
       {provide: RequestOptions, useClass: BaseRequestOptions},
@@ -44,13 +43,14 @@ describe('NoteService', () => {
     expect(this.lastConnection.request.url).to.equal('app/notes');
   });
 
-  it('getNotes() should return Subscription', () => {
-    let res;
-    this.noteService.getNotes((resp) => {
-      res = resp;
-    });
-    console.log(res);
-  });
-
+  it('getNotes() should return Observable with notes', fakeAsync(() => {
+    let result: String[];
+    this.noteService.getNotes().subscribe((notes: String[]) => result = notes);
+    this.lastConnection.mockRespond(new Response(new ResponseOptions({
+      body: JSON.stringify(mockResponse),
+    })));
+    tick();
+    expect(result['data'].length).to.equal(2);
+  }));
 
 });

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Note } from './note';
-import { NoteService } from '../notes-service/note.service';
 
 @Component({
   selector: 'app-note',
@@ -16,12 +15,12 @@ export class NoteComponent {
   change: EventEmitter<Note> = new EventEmitter(true);
 
   toggleDone(): void {
-    this.note._done = true;
+    this.note._done = !this.note._done;
     this.change.emit(this.note);
   }
 
   toggleDiscarded(): void {
-    this.note._deleted = true;
+    this.note._deleted = !this.note._deleted;
     this.change.emit(this.note);
   }
 

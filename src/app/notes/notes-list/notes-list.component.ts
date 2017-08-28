@@ -1,8 +1,7 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Note } from '../note/note';
 import { NoteService } from '../notes-service/note.service';
 import { EmitterService } from '../emitter-service/emitter.service';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-notes-list',

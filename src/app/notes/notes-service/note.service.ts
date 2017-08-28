@@ -21,14 +21,14 @@ export class NoteService {
   constructor(private http: Http) {
   }
 
-  getNotes() {
+  getNotes(): Observable<Array<Note>> {
     return this.http
       .get(this.notesUrl, this.options)
       .map((response) => <Note[]> response.json())
       .catch((error: any) => Observable.throw(error.json().error));
   }
 
-  create(note: Note) {
+  create(note: Note): Observable<Array<Note>> {
     const url = `${this.notesUrl}/${note.id}`;
     return this.http
       .post(url, JSON.stringify(note), this.options)
@@ -36,7 +36,7 @@ export class NoteService {
       .catch((error: any) => Observable.throw(error.json().error));
   }
 
-  update(note: Note) {
+  update(note: Note): Observable<Array<Note>> {
     const url = `${this.notesUrl}/${note.id}`;
     return this.http
       .put(url, JSON.stringify(note), this.options)
