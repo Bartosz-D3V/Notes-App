@@ -1,8 +1,7 @@
-import { ReflectiveInjector } from '@angular/core';
-import { fakeAsync, tick } from '@angular/core/testing';
-import { BaseRequestOptions, ConnectionBackend, Http, RequestOptions } from '@angular/http';
-import { Response, ResponseOptions } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
+import { Injectable, ReflectiveInjector } from '@angular/core';
+import { async, fakeAsync, tick } from '@angular/core/testing';
+import { BaseRequestOptions, ConnectionBackend, Http, RequestOptions, Response, ResponseOptions } from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import * as spies from 'chai-spies';
 
@@ -51,6 +50,22 @@ describe('NoteService', () => {
     })));
     tick();
     expect(result['data'].length).to.equal(2);
+    expect(result['data'][0]).to.deep.equal(mockResponse['data'][0]);
+    expect(result['data'][1]).to.deep.equal(mockResponse['data'][1]);
   }));
 
+  it('getNotes() should throw error while server is down', fakeAsync(() => {
+    let result: String[];
+    let catchedError: any;
+    this.noteService.getNotes()
+      .subscribe((notes: String[]) => result = notes,
+        (error: any) => catchedError = error);
+    this.lastConnection.mockError(new Response(new ResponseOptions({
+      status: 404,
+      statusText: 'URL not Found',
+    })));
+    tick();
+    assert.isUndefined(result);
+    assert.isDefined(catchedError);
+  }));
 });
