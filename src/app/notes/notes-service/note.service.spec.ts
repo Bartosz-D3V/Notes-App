@@ -88,6 +88,14 @@ describe('NoteService', () => {
       postSpy = chai.spy.on(this.noteService.http, 'post');
     });
 
+    it('should query current service url', () => {
+      const mockNote = new Note(33, 'Test title', 'Test description');
+      this.noteService.create(mockNote).subscribe();
+      assert.isDefined(this.lastConnection);
+      expect(this.lastConnection.request.url).to.equal(`app/notes/${mockNote.id}`);
+      expect(postSpy).to.have.been.called.once;
+    });
+
     it('should create new note', fakeAsync(() => {
       const mockNote = new Note(33, 'Test title', 'Test description');
       let result: Note;
@@ -117,6 +125,53 @@ describe('NoteService', () => {
       assert.isUndefined(result);
       assert.isDefined(catchedError);
       expect(postSpy).to.have.been.called.once;
+    }));
+  });
+
+  describe('update method', () => {
+    let putSpy;
+
+    beforeEach(() => {
+      putSpy = chai.spy.on(this.noteService.http, 'put');
+    });
+
+    it('should query current service url', () => {
+      const mockNote = new Note(33, 'Test title', 'Test description');
+      this.noteService.update(mockNote).subscribe();
+      assert.isDefined(this.lastConnection);
+      expect(this.lastConnection.request.url).to.equal(`app/notes/${mockNote.id}`);
+      expect(putSpy).to.have.been.called.once;
+    });
+
+    it('should update note', fakeAsync(() => {
+      const mockNote = new Note(33, 'Test title', 'Test description');
+      let result: Note;
+      this.noteService.update(mockNote).subscribe(
+        (response: Object) => result = response['data']
+      );
+      this.lastConnection.mockRespond(new Response(new ResponseOptions({
+        body: JSON.stringify({data: mockNote}),
+      })));
+      tick();
+      expect(result).to.deep.equal(mockNote);
+      expect(putSpy).to.have.been.called.once;
+    }));
+
+    it('should throw error if server is down', fakeAsync(() => {
+      const mockNote = new Note(33, 'Test title', 'Test description');
+      let result: Note;
+      let catchedError: any;
+      this.noteService.update(mockNote).subscribe(
+        (response: Object) => result = response['data'],
+        (error: any) => catchedError = error);
+      this.lastConnection.mockError(new Response(new ResponseOptions({
+        status: 404,
+        statusText: 'URL not Found',
+      })));
+      tick();
+      assert.isUndefined(result);
+      assert.isDefined(catchedError);
+      expect(putSpy).to.have.been.called.once;
     }));
   });
 });
