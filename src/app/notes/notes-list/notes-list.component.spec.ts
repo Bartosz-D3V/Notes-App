@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { expect, assert } from 'chai';
+import * as spies from 'chai-spies';
 
 import { NotesListComponent } from './notes-list.component';
 import { NoteComponent } from '../note/note.component';
@@ -9,8 +9,11 @@ import { FormsModule } from '@angular/forms';
 import { MdCardModule } from '@angular/material';
 import { NoteService } from '../notes-service/note.service';
 
+const expect = chai.expect;
+const assert = chai.assert;
+chai.use(spies);
 describe('NotesListComponent', () => {
-  let component: NotesListComponent;
+  let noteListComponent: NotesListComponent;
   let fixture: ComponentFixture<NotesListComponent>;
 
   beforeEach(async(() => {
@@ -31,15 +34,31 @@ describe('NotesListComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NotesListComponent);
-    component = fixture.componentInstance;
+    noteListComponent = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should be defined', () => {
-    assert.isDefined(component);
+    assert.isDefined(noteListComponent);
   });
 
   it('should create', () => {
-    expect(component).to.be.an('object');
+    expect(noteListComponent).to.be.an('object');
+  });
+
+  describe('retrieveNotes method', () => {
+    let spy;
+
+    afterEach(() => {
+      spy.reset();
+    });
+
+    it('should trigger getRemainingNotes if remaining was passed', () => {
+      spyOn(noteListComponent, 'retrieveNotes');
+      spy = chai.spy.on(noteListComponent, 'retrieveNotes');
+      noteListComponent.filter = 'remaining';
+      noteListComponent.retrieveNotes();
+      expect(spy).to.have.been.called.once;
+    });
   });
 });
