@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "dist": "ng build --prod --aot=false --no-sourcemap --base-href=/Notes-App/",
     "stylelint": "node node_modules/stylelint/bin/stylelint.js --config ./.stylelintrc.json --syntax scss --color ./src/**/*.scss",
-    "coverage": "codecov -f .codecov.yml --disable=gcov",
+    "coverage": "codecov",
     "precommit": "npm test",
     "commitmsg": "commitplease .git/COMMIT_EDITMSG",
     "clean": "rm -rf ./dist",
