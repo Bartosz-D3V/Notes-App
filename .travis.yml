@@ -9,12 +9,14 @@ addons:
 
 language: node_js
 node_js:
+  - 6.9
   - 7
   - 8
 
 branches:
   only:
     - master
+    - /^greenkeeper/.*$/
 
 before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
@@ -42,6 +44,4 @@ after_success:
   - npm run coverage
 
 notifications:
-  email:
-    on_failure: change
-    on_success: change
+  email: false

@@ -2,10 +2,12 @@ environment:
   matrix:
       - nodejs_version: "6.9"
       - nodejs_version: "7"
+      - nodejs_version: "8"
 
 branches:
   only:
   - master
+  - /^greenkeeper/.*$/
 
 install:
   - ps: Install-Product node $env:nodejs_version

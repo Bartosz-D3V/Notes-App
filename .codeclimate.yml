@@ -1,0 +1,26 @@
+engines:
+#  typescript:
+#      enabled: true
+#      channel: beta
+#      config: tslint.json
+  stylelint:
+      enabled: true
+#  duplication:
+#    enabled: true
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "**.scss"
+  - "**.html"
+  - "**.ts"
+exclude_paths:
+- "typings"
+- "angular-cli.json"
+- "angular-cli-build.js"
+- "**/*.js"
+- "**/*.lock"
+- "**/*.yml"
+- "node_modules"

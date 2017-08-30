@@ -63,7 +63,11 @@ module.exports = function (config) {
     customLaunchers: {
       Chrome_travis_ci: {
         base: 'Chrome',
-        flags: ['--no-sandbox']
+        flags: [
+          '--headless',
+          '--disable-gpu',
+          '--no-sandbox'
+        ]
       }
     },
     singleRun: true
