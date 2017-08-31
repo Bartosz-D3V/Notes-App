@@ -14,6 +14,7 @@ chai.use(spies);
 describe('NoteService', () => {
 
   beforeEach(() => {
+    let error: any;
     this.injector = ReflectiveInjector.resolveAndCreate([
       {provide: ConnectionBackend, useClass: MockBackend},
       {provide: RequestOptions, useClass: BaseRequestOptions},
@@ -22,7 +23,9 @@ describe('NoteService', () => {
     ]);
     this.noteService = this.injector.get(NoteService);
     this.backend = this.injector.get(ConnectionBackend) as MockBackend;
-    this.backend.connections.subscribe((connection: any) => this.lastConnection = connection);
+    this.backend.connections.subscribe(
+      (connection: any) => this.lastConnection = connection,
+      (err: any) => error = err);
   });
 
   it('should be created', () => {
@@ -55,7 +58,9 @@ describe('NoteService', () => {
     it('should return Observable with notes', fakeAsync(() => {
       let result: String[];
       let error: any;
-      this.noteService.getNotes().subscribe((notes: String[]) => result = notes, (err: any) => error = err);
+      this.noteService.getNotes().subscribe(
+        (notes: String[]) => result = notes,
+        (err: any) => error = err);
       this.lastConnection.mockRespond(new Response(new ResponseOptions({
         body: JSON.stringify(mockResponse),
       })));
@@ -96,7 +101,9 @@ describe('NoteService', () => {
       let error: any;
       let note: Note;
       const mockNote = new Note(33, 'Test title', 'Test description');
-      this.noteService.create(mockNote).subscribe((response: Note) => note = response, (err: any) => error = err);
+      this.noteService.create(mockNote).subscribe(
+        (response: Note) => note = response,
+        (err: any) => error = err);
 
       assert.isDefined(this.lastConnection);
       expect(this.lastConnection.request.url).to.equal(`app/notes/${mockNote.id}`);
@@ -148,8 +155,13 @@ describe('NoteService', () => {
     });
 
     it('should query current service url', () => {
+      let error: any;
+      let result: Note;
       const mockNote = new Note(33, 'Test title', 'Test description');
-      this.noteService.update(mockNote).subscribe();
+      this.noteService.update(mockNote).subscribe(
+        (response: Object) => result = response['data'],
+        (err: any) => error = err
+      );
 
       assert.isDefined(this.lastConnection);
       expect(this.lastConnection.request.url).to.equal(`app/notes/${mockNote.id}`);
