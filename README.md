@@ -5,7 +5,7 @@ _Simple application created using Angular CLI, Angular Material 2, Angular 4 and
 <p align="center">
 <a href="https://www.npmjs.com/package/Notes-App"><img src="https://img.shields.io/npm/l/express.svg" alt="MIT License"></a>
 <a href="https://travis-ci.org/Bartosz-D3V/Notes-App"><img src="https://travis-ci.org/Bartosz-D3V/Notes-App.svg?branch=master" alt="Build Status"></a>
-<a href="https://ci.appveyor.com/project/Bartosz-D3V/locker-js"><img src="https://ci.appveyor.com/api/projects/status/ceq04cukdgoci2eq?svg=true" alt="Build Status"></a>
+<a href="https://ci.appveyor.com/project/Bartosz-D3V/notes-app"><img src="https://ci.appveyor.com/api/projects/status/tmp52ddonqcxgcdv?svg=true" alt="Build Status"></a>
 <a href="https://codecov.io/gh/Bartosz-D3V/Notes-App">
   <img src="https://codecov.io/gh/Bartosz-D3V/Notes-App/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
