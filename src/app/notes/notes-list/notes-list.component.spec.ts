@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import * as spies from 'chai-spies';
@@ -7,13 +8,12 @@ import { HttpModule } from '@angular/http';
 import { MdCardModule } from '@angular/material';
 
 import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
 
 import { NotesListComponent } from './notes-list.component';
 import { NoteComponent } from '../note/note.component';
 import { NoteService } from '../notes-service/note.service';
 import { Note } from '../note/note';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
 const expect = chai.expect;
 const assert = chai.assert;
@@ -85,6 +85,7 @@ describe('NotesListComponent', () => {
       spy = chai.spy.on(noteListComponent, 'retrieveNotes');
       noteListComponent.filter = 'remaining';
       noteListComponent.retrieveNotes();
+
       expect(spy).to.have.been.called.once;
     });
 
@@ -93,6 +94,7 @@ describe('NotesListComponent', () => {
       spy = chai.spy.on(noteListComponent, 'getStarredNotes');
       noteListComponent.filter = 'starred';
       noteListComponent.getStarredNotes();
+
       expect(spy).to.have.been.called.once;
     });
 
@@ -101,6 +103,7 @@ describe('NotesListComponent', () => {
       spy = chai.spy.on(noteListComponent, 'getDoneNotes');
       noteListComponent.filter = 'done';
       noteListComponent.getDoneNotes();
+
       expect(spy).to.have.been.called.once;
     });
 
@@ -109,6 +112,7 @@ describe('NotesListComponent', () => {
       spy = chai.spy.on(noteListComponent, 'getDeletedNotes');
       noteListComponent.filter = 'trash';
       noteListComponent.getDeletedNotes();
+
       expect(spy).to.have.been.called.once;
     });
   });
@@ -117,6 +121,7 @@ describe('NotesListComponent', () => {
     it('getRemainingNotes should return notes that only property is remaining', () => {
       noteListComponent.getRemainingNotes();
       const remainingNotes = noteListComponent.notes;
+
       expect(remainingNotes).length(1);
     });
   });
