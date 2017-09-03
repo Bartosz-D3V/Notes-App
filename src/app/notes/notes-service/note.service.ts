@@ -20,7 +20,7 @@ export class NoteService {
   });
 
   private static handleError(error: any): Observable<any> {
-    console.error('An error occurred', error);
+    console.log('An error occurred', error);
     throw Observable.throw(error.message || error);
   }
 

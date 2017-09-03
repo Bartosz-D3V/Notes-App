@@ -14,6 +14,7 @@ chai.use(spies);
 describe('NoteService', () => {
 
   beforeEach(() => {
+    let error: any;
     this.injector = ReflectiveInjector.resolveAndCreate([
       {provide: ConnectionBackend, useClass: MockBackend},
       {provide: RequestOptions, useClass: BaseRequestOptions},
@@ -22,7 +23,9 @@ describe('NoteService', () => {
     ]);
     this.noteService = this.injector.get(NoteService);
     this.backend = this.injector.get(ConnectionBackend) as MockBackend;
-    this.backend.connections.subscribe((connection: any) => this.lastConnection = connection);
+    this.backend.connections.subscribe(
+      (connection: any) => this.lastConnection = connection,
+      (err: any) => error = err);
   });
 
   it('should be created', () => {
@@ -46,6 +49,7 @@ describe('NoteService', () => {
 
     it('should query current service url', () => {
       this.noteService.getNotes();
+
       assert.isDefined(this.lastConnection);
       expect(this.lastConnection.request.url).to.equal('app/notes');
       expect(getSpy).to.have.been.called.once;
@@ -53,11 +57,15 @@ describe('NoteService', () => {
 
     it('should return Observable with notes', fakeAsync(() => {
       let result: String[];
-      this.noteService.getNotes().subscribe((notes: String[]) => result = notes);
+      let error: any;
+      this.noteService.getNotes().subscribe(
+        (notes: String[]) => result = notes,
+        (err: any) => error = err);
       this.lastConnection.mockRespond(new Response(new ResponseOptions({
         body: JSON.stringify(mockResponse),
       })));
       tick();
+
       expect(result['data'].length).to.equal(2);
       expect(result['data'][0]).to.deep.equal(mockResponse['data'][0]);
       expect(result['data'][1]).to.deep.equal(mockResponse['data'][1]);
@@ -75,6 +83,7 @@ describe('NoteService', () => {
         statusText: 'URL not Found',
       })));
       tick();
+
       assert.isUndefined(result);
       assert.isDefined(catchedError);
       expect(getSpy).to.have.been.called.once;
@@ -89,23 +98,32 @@ describe('NoteService', () => {
     });
 
     it('should query current service url', () => {
+      let error: any;
+      let note: Note;
       const mockNote = new Note(33, 'Test title', 'Test description');
-      this.noteService.create(mockNote).subscribe();
+      this.noteService.create(mockNote).subscribe(
+        (response: Note) => note = response,
+        (err: any) => error = err);
+
       assert.isDefined(this.lastConnection);
       expect(this.lastConnection.request.url).to.equal(`app/notes/${mockNote.id}`);
       expect(postSpy).to.have.been.called.once;
     });
 
     it('should create new note', fakeAsync(() => {
-      const mockNote = new Note(33, 'Test title', 'Test description');
+      let error: any;
       let result: Note;
+      const mockNote = new Note(33, 'Test title', 'Test description');
       this.noteService.create(mockNote).subscribe(
-        (response: Object) => result = response['data']
+        (response: Object) => result = response['data'],
+        (err: any) => error = err
       );
       this.lastConnection.mockRespond(new Response(new ResponseOptions({
         body: JSON.stringify({data: mockNote}),
       })));
       tick();
+
+      assert.isUndefined(error);
       expect(result).to.deep.equal(mockNote);
       expect(postSpy).to.have.been.called.once;
     }));
@@ -122,6 +140,7 @@ describe('NoteService', () => {
         statusText: 'URL not Found',
       })));
       tick();
+
       assert.isUndefined(result);
       assert.isDefined(catchedError);
       expect(postSpy).to.have.been.called.once;
@@ -136,23 +155,33 @@ describe('NoteService', () => {
     });
 
     it('should query current service url', () => {
+      let error: any;
+      let result: Note;
       const mockNote = new Note(33, 'Test title', 'Test description');
-      this.noteService.update(mockNote).subscribe();
+      this.noteService.update(mockNote).subscribe(
+        (response: Object) => result = response['data'],
+        (err: any) => error = err
+      );
+
       assert.isDefined(this.lastConnection);
       expect(this.lastConnection.request.url).to.equal(`app/notes/${mockNote.id}`);
       expect(putSpy).to.have.been.called.once;
     });
 
     it('should update note', fakeAsync(() => {
-      const mockNote = new Note(33, 'Test title', 'Test description');
+      let error: any;
       let result: Note;
+      const mockNote = new Note(33, 'Test title', 'Test description');
       this.noteService.update(mockNote).subscribe(
-        (response: Object) => result = response['data']
+        (response: Object) => result = response['data'],
+        (err: any) => error = err
       );
       this.lastConnection.mockRespond(new Response(new ResponseOptions({
         body: JSON.stringify({data: mockNote}),
       })));
       tick();
+
+      assert.isUndefined(error);
       expect(result).to.deep.equal(mockNote);
       expect(putSpy).to.have.been.called.once;
     }));
@@ -160,17 +189,18 @@ describe('NoteService', () => {
     it('should throw error if server is down', fakeAsync(() => {
       const mockNote = new Note(33, 'Test title', 'Test description');
       let result: Note;
-      let catchedError: any;
+      let error: any;
       this.noteService.update(mockNote).subscribe(
         (response: Object) => result = response['data'],
-        (error: any) => catchedError = error);
+        (err: any) => error = err);
       this.lastConnection.mockError(new Response(new ResponseOptions({
         status: 404,
         statusText: 'URL not Found',
       })));
       tick();
+
       assert.isUndefined(result);
-      assert.isDefined(catchedError);
+      assert.isDefined(error);
       expect(putSpy).to.have.been.called.once;
     }));
   });
