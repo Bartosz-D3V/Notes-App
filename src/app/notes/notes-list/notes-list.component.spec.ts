@@ -38,7 +38,11 @@ describe('NotesListComponent', () => {
   class FakeNoteService {
     getNotes(): any {
       return Observable.of(mockResponse);
-    }
+    };
+
+    update(note: Note): Observable<any> {
+      return Observable.of(null);
+    };
   }
 
   beforeEach(async(() => {
@@ -113,12 +117,36 @@ describe('NotesListComponent', () => {
     });
   });
 
-  describe('getter method', () => {
+  describe('public method', () => {
     it('getRemainingNotes should return notes that only property is remaining', () => {
       noteListComponent.getRemainingNotes();
       const remainingNotes = noteListComponent.notes;
       expect(remainingNotes).length(1);
     });
-  });
 
+    it('getStarredNotes should return notes that only property is starred', () => {
+      noteListComponent.getStarredNotes();
+      const starredNotes = noteListComponent.notes;
+      expect(starredNotes).length(1);
+    });
+
+    it('getDoneNotes should return notes that only property is done', () => {
+      noteListComponent.getDoneNotes();
+      const doneNotes = noteListComponent.notes;
+      expect(doneNotes).length(1);
+    });
+
+    it('getDeletedNotes should return notes that only property is deleted', () => {
+      noteListComponent.getDeletedNotes();
+      const deletedNotes = noteListComponent.notes;
+      expect(deletedNotes).length(2);
+    });
+
+    it('updateNote should invoke update method in the service', () => {
+      const spy = chai.spy.on(noteListComponent, 'updateNote');
+      const note: Note = new Note(999, 'Test title', 'Test description');
+      noteListComponent.updateNote(note);
+      expect(spy).to.have.been.called.once;
+    });
+  });
 });
