@@ -96,7 +96,7 @@ describe('NotesListComponent', () => {
       spyOn(noteListComponent, 'getStarredNotes');
       spy = chai.spy.on(noteListComponent, 'getStarredNotes');
       noteListComponent.filter = 'starred';
-      noteListComponent.getStarredNotes();
+      noteListComponent.retrieveNotes();
       expect(spy).to.have.been.called.once;
     });
 
@@ -104,7 +104,7 @@ describe('NotesListComponent', () => {
       spyOn(noteListComponent, 'getDoneNotes');
       spy = chai.spy.on(noteListComponent, 'getDoneNotes');
       noteListComponent.filter = 'done';
-      noteListComponent.getDoneNotes();
+      noteListComponent.retrieveNotes();
       expect(spy).to.have.been.called.once;
     });
 
@@ -112,7 +112,7 @@ describe('NotesListComponent', () => {
       spyOn(noteListComponent, 'getDeletedNotes');
       spy = chai.spy.on(noteListComponent, 'getDeletedNotes');
       noteListComponent.filter = 'trash';
-      noteListComponent.getDeletedNotes();
+      noteListComponent.retrieveNotes();
       expect(spy).to.have.been.called.once;
     });
   });
