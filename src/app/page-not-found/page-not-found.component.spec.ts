@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PageNotFoundComponent } from './page-not-found.component';
 
+const expect = chai.expect;
+const assert = chai.assert;
 describe('PageNotFoundComponent', () => {
   let component: PageNotFoundComponent;
   let fixture: ComponentFixture<PageNotFoundComponent>;
@@ -20,6 +22,6 @@ describe('PageNotFoundComponent', () => {
   });
 
   it('should be created', () => {
-    expect(component).toBeTruthy();
+    assert.isDefined(component);
   });
 });

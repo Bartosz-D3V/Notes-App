@@ -1,8 +1,7 @@
-import { expect, assert } from 'chai';
-
 import { Note } from './note';
 
-
+const expect = chai.expect;
+const assert = chai.assert;
 describe('Note', () => {
   it('is a class', () => {
     expect(Note).to.be.a('function');

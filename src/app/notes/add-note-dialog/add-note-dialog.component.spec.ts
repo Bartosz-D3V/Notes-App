@@ -3,8 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { MdDialog, MdDialogModule, MdInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { expect, assert } from 'chai';
-
 import { AddNoteDialogComponent } from './add-note-dialog.component';
 import { NoteService } from '../notes-service/note.service';
 import { HttpModule } from '@angular/http';
@@ -24,6 +22,8 @@ import { HttpModule } from '@angular/http';
 class DialogModule {
 }
 
+const expect = chai.expect;
+const assert = chai.assert;
 describe('AddNoteDialogComponent', () => {
   let component: AddNoteDialogComponent;
   let dialog: MdDialog;

@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';
 
+const expect = chai.expect;
+const assert = chai.assert;
 describe('AboutComponent', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
@@ -20,6 +22,6 @@ describe('AboutComponent', () => {
   });
 
   it('should be created', () => {
-    expect(component).toBeTruthy();
+    assert.isDefined(component);
   });
 });
