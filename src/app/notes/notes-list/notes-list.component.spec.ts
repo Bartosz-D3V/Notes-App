@@ -66,6 +66,7 @@ describe('NotesListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NotesListComponent);
     noteListComponent = fixture.componentInstance;
+    noteListComponent.filter = '';
     fixture.detectChanges();
   });
 
