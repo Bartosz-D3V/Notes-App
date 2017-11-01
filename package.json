@@ -54,7 +54,7 @@
     "@angular/material": "^2.0.0-beta.8",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
-    "@angular/router": "^4.0.0",
+    "@angular/router": "^5.0.0",
     "@types/chai-spies": "^0.0.0",
     "@types/hammerjs": "^2.0.34",
     "angular-cli-ghpages": "^0.5.1",
