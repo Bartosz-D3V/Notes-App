@@ -9,6 +9,6 @@ describe('notes-app App', () => {
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Notes app');
+    expect<any>(page.getParagraphText()).toEqual('Notes app');
   });
 });
