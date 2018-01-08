@@ -9,8 +9,6 @@ _Simple application created using Angular CLI, Angular Material 2, Angular 4 and
 <a href="https://codecov.io/gh/Bartosz-D3V/Notes-App">
   <img src="https://codecov.io/gh/Bartosz-D3V/Notes-App/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
-<a href="https://greenkeeper.io"/><img src="https://badges.greenkeeper.io/Bartosz-D3V/Notes-App.svg" alt="Greenkeeper badge"></a>
-<a href="https://greenkeeper.io"/><img src="https://img.shields.io/badge/dependencies-monitored-green.svg" alt="Greenkeeper badge"></a>
 <a href="https://codeclimate.com/github/Bartosz-D3V/Notes-App"><img src="https://codeclimate.com/github/Bartosz-D3V/Notes-App/badges/gpa.svg" /></a>
 <a href="https://codeclimate.com/github/Bartosz-D3V/Notes-App"><img src="https://codeclimate.com/github/Bartosz-D3V/Notes-App/badges/issue_count.svg" /></a>
 <a href="https://david-dm.org/bartosz-d3v/Notes-App" title="dependencies status"><img src="https://david-dm.org/bartosz-d3v/Notes-App/status.svg"/></a>
